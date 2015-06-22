@@ -29,6 +29,7 @@ namespace MadeInMalmo.Models
 
         public static ApplicationDbContext Create()
         {
+            //test av ändring HG
             return new ApplicationDbContext();
         }
     }
