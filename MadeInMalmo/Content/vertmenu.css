@@ -1,0 +1,305 @@
+/**
+ * Vertical menu styles
+*/
+
+@import url("../css/_variables.less");
+@import url("../css/_mixins.less");
+
+.bs-sidebar {
+	width: 263px !important;
+	margin-top: 30px;
+	margin-bottom: 30px;
+	padding-top: 0px;
+	padding-bottom: 0px;
+	text-shadow: 0 1px 0 #fff;
+	background: @blueBackground;
+	border-radius: 0px;
+	}
+
+@media (max-width: 1200px) { 
+	.bs-sidebar { width: 220px !important; }
+}
+@media (max-width: 990px) { 
+	.bs-sidebar { width: 100% !important; }
+	.affix { position: relative; }
+}
+
+/* By default it's not affixed in mobile views, so undo that 
+.bs-sidebar.affix { position: static; } */
+
+.bs-sidebar.panel { 
+	border:none; 
+	height: 100%; 
+	margin:0px;
+	padding-bottom: 0;
+	background-color: #386D8C;	
+	}
+
+.bs-sidenav {
+	background: @blueBackground;
+	box-shadow: 0 1px 0 #474b4e;
+	border-right: 1px solid #1e3c4c;
+	padding:0px;
+	overflow: hidden;
+	}
+	
+.nav > li { line-height:11px; }
+	
+.bs-sidenav.nav > li > a {
+	.nav-item();
+	font-size: @font-size-base;
+	font-weight: normal;
+	text-decoration: none;
+	white-space: nowrap;
+	margin: 0;
+	padding: 10px;
+	position: relative;
+	display: block;
+	}	
+	
+.bs-sidenav.nav > li > a .nav-caret {
+	background: url(../img/leftmenu_rightarrow.png) no-repeat scroll right center;
+	border: none;
+    height: 7px;
+    width: 4px;
+	position: absolute;
+	right: 10px;
+	top: 12px;
+	}
+	
+.bs-sidenav.nav > li.active > a .nav-caret {
+	border-left: 4px solid rgba(0, 0, 0, 0);
+    border-right: 4px solid rgba(0, 0, 0, 0);
+    border-top: 4px solid;
+	background: none;
+    height: 7px;
+    width: 4px;
+	}
+	
+.bs-sidenav.nav > li.activeParent:last-child > a {
+	border-bottom: 1px solid @contentSeparatorBorderTopColorBlue !important;
+	}
+		
+.bs-sidenav.nav li:last-child a, 
+.bs-sidenav.nav > li.active:last-child > a {
+	border-bottom: 0px solid @contentSeparatorBorderTopColorBlue;
+	}
+	
+.bs-sidenav.nav li:first-child a, 
+.bs-sidenav.nav > li.active:first-child > a {
+	border-top: 0px solid @contentSeparatorBorderTopColorBlue;
+	}
+	
+.bs-sidenav.nav > li > a:hover {
+	background: #56839d;
+	border-left:0px;
+	border-right:0px;
+	}
+
+.bs-sidenav.nav > li.active > a {
+	.nav-active();
+    border-right: 0px;
+	z-index: 99;
+	font-weight: bold;
+	}	
+	
+.bs-sidenav.nav > li.active > a:hover, 
+.bs-sidenav.nav > li.active:hover > a {
+	color: #fff;
+	border-right:0px;
+	}
+	
+.bs-sidenav.nav .nav {
+	background: #2e5b73;
+	box-shadow: 0 1px 1px #2A5268 inset, -2px 0 1px #2A5268 inset, 1px 0 1px #2A5268 inset;
+	margin:0px;
+    display: none;
+	}
+	
+.bs-sidebar .nav li.active > ul.nav { display: block; }
+	
+.bs-sidenav.nav .nav a {
+	font-size: @font-size-base;
+	padding: 8px 20px;
+	color: #fff;
+	text-shadow: 0 1px 0 #19313f;
+	text-decoration: none;
+	}	
+
+.bs-sidenav.nav .nav .active a, 
+.bs-sidenav.nav .nav .active a:hover {
+	.nav-sub-active();
+	border-right: 0;
+	}	
+
+.bs-sidenav.nav .nav a:hover {
+	background: #4d7388;
+	border-right:0px;
+	}
+	
+.bs-sidenav.nav li.active .active {
+	background: #4d7388;
+	border-right:0px;
+	}
+	
+/* Heading */
+.bs-sidebar .heading {
+	background: #4689B0;
+	background: -webkit-linear-gradient(top,  #4689B0 0%,#386D8C 100%);
+	background: linear-gradient(to bottom,  #4689B0 0%,#386D8C 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4689B0', endColorstr='#386D8C',GradientType=0 );
+    background-size: 100% auto;
+    border-bottom: 0.1rem solid #2D5770;
+    border-top: 0.1rem solid #5995B8;
+    box-shadow: -2px 0 3px rgba(0, 0, 0, 0.1) inset;
+    display: block;
+    height: 4rem;
+	}
+	
+/* Static nav */
+.bs-sidebar.static-nav li.active a, 
+.bs-sidebar.static-nav li.active a:active, 
+.bs-sidebar.static-nav li.active a:focus, 
+.bs-sidebar.static-nav li.active a:hover {
+	.nav-sub-active();
+	border-right: 0;
+	box-shadow: none;
+	border-top:0px;
+	}
+
+.bs-sidebar.static-nav li.active:hover > a { color: @base-color; }
+.bs-sidebar.static-nav li.active.activeParent:hover > a { color: #fff; }
+	
+.bs-sidebar.static-nav.affix {
+	position: relative;
+	top:0px;
+	}
+	
+	
+/* Badges/Labels on vertical menu */
+.sidenav-dropdown .bs-sidenav .badge { right: 24px; } 
+	
+.bs-sidenav .badge {
+	position: absolute;
+	right: 4px;
+	top: 6px;
+	}
+	
+.bs-sidenav.nav .nav .badge { top: 4px; }
+
+.sidenav-dropdown .bs-sidenav .label { right: 24px; }	
+	
+.bs-sidenav .label {
+	position: absolute;
+	right: 4px;
+	top: 7px;
+	}
+
+.bs-sidenav .active  .label-danger,
+.bs-sidenav .active  .badge-danger { box-shadow: 0 1px 0 #ec6b51 inset, 1px 0 0 #b6270e, -1px 0 0 #b6270e, 0 1px 0 #921701, 0 -1px 0 #d8371a; }
+	
+.bs-sidenav .active  .label-info,
+.bs-sidenav .active  .badge-info { box-shadow: 0 1px 0 #6492ad inset, 1px 0 0 #2a5168, -1px 0 0 #2a5168, 0 1px 0 #1f3d4e, 0 -1px 0 #336380; }
+	
+.bs-sidenav .active  .label-warning,
+.bs-sidenav .active  .badge-warning { box-shadow: 0 1px 0 #ecab51 inset, 1px 0 0 #b75a0a, -1px 0 0 #b75a0a, 0 1px 0 #943501, 0 -1px 0 #e38915; }	
+
+.bs-sidenav .active  .label-default,
+.bs-sidenav .active  .badge-default { box-shadow: 0 1px 0 #ccc inset, 1px 0 0 #7e7e7e, -1px 0 0 #7e7e7e, 0 1px 0 #5f5f5f, 0 -1px 0 #bababa; }
+	
+
+/* Vertical navigation with icons */
+.bs-sidebar.icons-nav li a:before {
+	background: url(../eAccounting/styles/sidemenu_icons.png) 0 0 no-repeat transparent;
+	content: "";
+    height: 25px;
+    left: 8px;
+    position: absolute;
+    top: 6px;
+    width: 24px;
+	}
+	
+.bs-sidebar.icons-nav li a:after {
+	background: url(../eAccounting/styles/sidemenu_arrow.png) 0 0 no-repeat transparent;
+	content: "";
+    height: 9px;
+    position: absolute;
+    right: 10px;
+    top: 13px;
+    width: 8px;
+	}
+.bs-sidebar.icons-nav li a { padding: 11px 0 11px 40px; }
+
+.bs-sidebar.icons-nav .active.activeParent a, 
+.bs-sidebar.icons-nav .active.activeParent a:hover { .nav-active(); }
+
+.bs-sidebar.icons-nav .active.activeParent .nav a:before, 
+.bs-sidebar.icons-nav .active.activeParent .nav a:after, 
+.bs-sidebar.icons-nav .active.activeParent .nav a {
+	background-image: none;
+	border: none;
+	padding: 8px 10px 8px 40px;
+	}
+	
+.bs-sidebar.icons-nav .active.activeParent .nav a {
+	background: transparent;
+	filter: none;
+	}
+
+.bs-sidebar.icons-nav .active.activeParent .nav .active a, 
+.bs-sidebar.icons-nav .active.activeParent .nav .active a:hover {
+	.nav-sub-active();
+	border-right: 0;
+	font-weight:bold;
+	}
+	
+.bs-sidebar.icons-nav .active.activeParent .nav li a:hover {
+	background: #4d7388;
+	border-right:0px;
+	}
+	
+.bs-sidebar.icons-nav .active.activeParent .nav a:focus { 
+	color: #fff;
+	text-shadow: 0 1px 0 #1B3443;
+	}	
+	
+.bs-sidebar.icons-nav .active.activeParent .nav a:focus { 
+	color: #fff;
+	text-shadow: 0 1px 0 #1B3443;
+	}
+
+.bs-sidebar.icons-nav li a.dashboardMenuLink:before { background-position: 0 -1px; }
+.bs-sidebar.icons-nav li.active a.dashboardMenuLink:before { background-position: 0 -26px; }
+.bs-sidebar.icons-nav li a.saleMenuLink:before, 
+.bs-sidebar.icons-nav li.active.activeParent a.saleMenuLink:before { background-position: -24px -1px; }
+.bs-sidebar.icons-nav li.active a.saleMenuLink:before { background-position: -24px -23px; }
+.bs-sidebar.icons-nav li a.purchaseMenuLink:before { background-position: -48px -3px; }
+.bs-sidebar.icons-nav li.active a.saleMenuLink:before { background-position: -48px -23px; }
+.bs-sidebar.icons-nav li a.reconciliationMenuLink:before { background-position: -72px -2px; }
+.bs-sidebar.icons-nav li.active a.reconciliationMenuLink:before { background-position: -72px -23px; }
+.bs-sidebar.icons-nav li a.accountingMenuLink:before { background-position: -96px -2px; }
+.bs-sidebar.icons-nav li.active a.accountingMenuLink:before { background-position: -96px -2px; }
+.bs-sidebar.icons-nav li a.settingsMenuLink:before { background-position: -120px -1px; }
+.bs-sidebar.icons-nav li.active.activeParent a.settingsMenuLink:before { background-position: -120px -1px; }
+.bs-sidebar.icons-nav li.active a:after {  background-position: -10px 0px; }
+.bs-sidebar.icons-nav li.active.activeParent a:after {  background-position: 0px 0px; }
+
+/* /Vertical navigation with icons */
+	
+	
+@media (min-width: 992px) {
+	.bs-sidebar.affix, 
+	.bs-sidebar.affix-bottom { width: 213px; }
+	.bs-sidebar.affix { position: fixed; top: 0px; }
+	.bs-sidebar.affix-bottom { position: absolute; }
+	.bs-sidebar.affix-bottom .bs-sidenav, 
+	.bs-sidebar.affix .bs-sidenav { margin-top: 0; margin-bottom: 0; }
+}
+
+@media (min-width: 1200px) {
+	.bs-sidebar.affix-bottom, 
+	.bs-sidebar.affix { width: 263px; }
+}
+
+	
+/* /Vertical menu */
