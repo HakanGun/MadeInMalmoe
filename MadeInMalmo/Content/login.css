@@ -1,0 +1,217 @@
+/**
+ * Login page styles - Nordic Cool 2.0
+*/
+
+@import url("../css/_variables.less");
+@import url("../css/_mixins.less");
+
+.login-page { 
+	background: url(../img/login-background.png) no-repeat scroll 0 0 transparent;
+	background-size: cover;
+	padding-top: 0;
+	.terms {
+		color: #fff;
+		text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+		margin-top: 15px;
+		position: relative;
+		top: 13%;
+		a { color: #fff; }
+		}
+	}
+	
+.login-box { 
+	margin: 0 auto 0;
+	border-radius: 7px;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.15), -1px -1px 5px rgba(0, 0, 0, 0.15);
+	width: 580px;
+	padding-top: 0px !important;
+	position: relative;
+	top: 13%;
+	> h1 {
+		background: url(../img/visma-login-head.png) no-repeat scroll 0 0 transparent;
+		min-height: 139px;
+		margin:0px;
+		font-family: Open sans;
+		font-weight: 600;
+		letter-spacing: -0.5px;
+		padding: 27px 0 0 188px;
+		color: #f6f8f9;
+		text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+		display: block;
+		position: relative;
+		text-indent:-9999px;
+		}
+	.login-content {
+		background: #EFEFEF;
+		background: -webkit-linear-gradient(top,  #EFEFEF 0%,#e6e6e6 50%,#e6e6e6 82%,#f9f9f9 100%);
+		background: linear-gradient(to bottom,  #EFEFEF 0%,#e6e6e6 50%,#e6e6e6 82%,#f9f9f9 100%);
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#EFEFEF', endColorstr='#f9f9f9',GradientType=0 );
+		border-bottom-right-radius: 5px;
+		border-bottom-left-radius: 5px;
+		box-shadow: 1px 0 0 #8c8c8c inset, -1px 0 0 #8c8c8c inset;
+		padding-bottom: 37px;
+		position: relative;
+		p { margin-bottom: 15px; }
+		#errors, #mail-error { margin:0px; }
+		}
+	.content-holder {
+		min-height: 180px;
+		overflow: hidden;
+		clear: both;
+		margin: 0px 95px 20px 95px;
+		padding-top: 10px;
+		position: relative;
+		z-index: 999;
+		h2 { 
+			font-size: 13px; 
+			margin-top:0px;
+			margin-bottom: 15px;
+			}
+		p { margin-bottom: 15px; }
+		.col-xs-12 {
+			margin-bottom: 15px;
+			overflow: hidden;
+			&:last-child { margin:0px; }
+			}
+		.right-bottom-align { 
+			right: 0px; 
+			bottom: 0px; 
+			.btn { margin-right: 0px; }
+			}
+		input[type='text'], input[type='password'] { height: 22px; }
+		input[type='checkbox'] { vertical-align: bottom; }
+		.username label, 
+		.password label { padding-top: 4px; display: inline-block; }
+		.remember-checkbox label { position: relative; margin-left: 20px; }
+		}
+	.validation-failed #errors, .validation-failed #mail-error { margin: 5px 0 20px; color: @required-color; }
+	.btn { min-width: 77px; }
+	}
+	
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+	input[type='checkbox'] { vertical-align: text-bottom; }
+} /* Chrome/Safari fix */
+	
+.forgot-pass-content {
+	.right-bottom-align { 
+		right: 0px; 
+		bottom: 0px; 
+		.btn:first-child { margin-right: 0px; margin-left: 4px; }
+		}
+	label { 
+		padding-right: 10px;
+		padding-top: 4px;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		word-wrap: normal;
+		}
+	.col-xs-12 { overflow: visible; }
+	h2 { 
+		font-size: 13px; 
+		margin-top:0px;
+		margin-bottom: 15px;
+		}
+	p { margin-bottom: 5px; }
+	form, .new-user {
+		margin:20px 0px 20px !important;
+		position: relative;
+		z-index: 999;
+		min-height: 100% !important;
+		}
+	}
+	
+.login-footer {
+	bottom: 10px;
+    position: absolute;
+    width: 100%;
+	border-top: 1px solid #8c8c8c;
+	box-shadow: 0 1px 0 #FFFFFF inset;
+	img { margin-top: 10px; }
+	}
+	
+.login-page footer { display: none; }
+
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+	.remember-checkbox label { top:0px; }
+} /* Chrome/Safari fix */
+
+/* Responsive */
+@media(max-width:1441px) { .login-box, .login-page .terms { top: 15%;} }
+@media(max-width:1280px) { .login-box, .login-page .terms { top: 12%;} }
+@media(max-width:980px) { 
+	.login-box, .login-page .terms { top: 20%;} 
+	.login-page { background-size: auto auto; }
+	}
+@media(max-width:641px) { 
+	.login-page .terms { top:20%; }
+	.login-box { 
+		width: 90%;
+		min-width: 235px;
+		top: 20%;
+		> h1 { 
+			background-size: 100% auto; 
+			z-index: 99;
+			padding-top: 15px;
+			}
+		.login-content { margin-top: -45px; }
+		.content-holder {
+			margin: 20px 60px;
+			padding-bottom: 25px;
+			padding-top: 15px;
+			min-height: 245px;
+			.col-xs-12 { margin-bottom: 5px; }
+			.col-xs-12 [class*="col-xs-"] { 
+				width: 100%; 
+				margin-bottom: 5px;
+				}
+			.username [class*="col-xs-"], 
+			.password [class*="col-xs-"] { 
+				width: 100%; 
+				margin-bottom: 10px;
+				}
+			span.col-xs-3 { display: none; }
+			.remember-checkbox + .text-right { float: right; }
+			.btn { margin: 0px; }
+			}
+		.validation-failed #errors, .validation-failed #mail-error { margin: 5px 0 10px; }
+		}
+	.form-group { margin-bottom: 5px; }
+}
+
+@media(max-width:541px) { 
+	body {background-size: auto auto !important; }
+	.login-box > h1 { min-height: 125px; }
+	.login-content .content-holder { margin-top: 30px; min-height: 245px; }
+}
+	
+@media(max-width:510px) { 
+	.login-box { margin-top: -10%; }
+	.login-box > h1 { min-height: 105px; }
+}
+	
+@media(max-width:481px) { 
+	.login-box {
+		h1 { box-shadow: 1px 0 0 #8c8c8c inset, -1px 0 0 #8c8c8c inset; font-size: 25px; min-height: 95px; }
+		.login-content { 
+			margin-top: -65px; 
+			.content-holder { margin: 50px 30px 20px; }
+			} 
+		}
+	.forgot-pass-content { margin: 50px 30px 20px; min-height: 220px; }
+}
+	
+@media(max-width:441px) { 
+	.login-box .login-content { margin-top: -70px; padding-top: 15px; }
+	.login-box h1 { padding: 10px 0 0 135px; }
+}
+	
+@media(max-width: 321px) {
+	.login-box .login-content { margin-top: -80px; border-left: 0px; }
+	.login-box h1 { padding: 8px 0 0 88px; font-size: 17px; min-height: 85px; }
+	.login-box .login-content .content-holder { margin-left: 20px; margin-right: 20px; min-height: 255px; }
+	.forgot-pass-content .col-xs-3, .forgot-pass-content .col-xs-9 { width: 100%; clear: both; margin-bottom: 5px;}
+	.forgot-pass-content .btn:first-child { margin-bottom: 5px; }
+}
+	
