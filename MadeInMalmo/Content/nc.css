@@ -1170,16 +1170,27 @@ a.list-group-item.active > .badge,
 
 .popover-title { .modalHeader(); padding: 10px 20px 7px; } 
 .popover-content.popover-content-help-icon { padding:20px 20px 10px 88px; }
-	
+
 .popover-content-help-icon:before {
-	background: url(../img/modal-icon.png) left center no-repeat;
+    /*background: url(../img/modal-icon.png) left center no-repeat;
 	content: "";
     display: block;
     height: 46px;
     left: 20px;
     position: absolute;
     top: 55px;
-    width: 44px;
+    width: 44px;*/
+}
+
+.help{
+    background: url(../NC2%20Toolbar%20icons/help_general_normal.png)left center no-repeat;
+	content: "";
+    display: block;
+    left: .5rem;
+    position: absolute;
+    top: .4rem;
+    height: 32px;
+    width: 32px;
 	}
 
 .no-title .popover-title { border: 0px; } 
@@ -1243,6 +1254,13 @@ a.list-group-item.active > .badge,
 
 
 /* /Modal */
+
+/*Notification*/
+
+.notification{
+    background: url(../NC2%20Toolbar%20icons/infoline_normal.png) left center no-repeat;
+}
+
 
 
 /* Tooltip */
@@ -1693,3 +1711,8 @@ a.list-group-item.active > .badge,
 .bg-warning { background: @warningBgColor; }
 .bg-danger { background: @dangerBgColor; color: #fff; }
 /* /Helper classes */
+
+.search icon{
+
+    background:url(../img/searchIcon.png) no-repeat;
+}
