@@ -6,21 +6,33 @@
     <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS, and JavaScript.</p>
     <p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
 </div>
+    div {
+    width: 300px;
+    padding: 25px;
+    border: 25px solid navy;
+    margin: 25px;
+}
 -->
+
 @for (var i = 1; i <= 10; i++)
 {
     <div class="col-md-4">
         <form>
-            <fieldset style="width: 600px; height: 250px; margin: auto; float:left">
-                <legend>Projekt @i</legend>
+            <!--     </div>-->
+           <!-- <fieldset style="width: 425px; height: 240px; margin: 4px; float:left; border: 2px solid navy">-->
+                <!-- <legend>Projekt @i</legend>-->
                 <!--   <div style="width: 400px; height: 250px; margin: 0 4px 7px 4px 2px">-->
-                <div id="@string.Format("container-speed{0}", i)" style="width: 200px; height: 120px; float:left"></div>
-                <div id="@string.Format("container-rpm{0}", i)" style="width: 200px; height: 120px; float: left"></div>
-                <!--     </div>-->
-            </fieldset>
-        </form>
+                <div id ="rcorners2">
+                    <fieldset>
+                        <legend style="margin: 5px;">Projekt @i</legend>
+                        <div id="@string.Format("container-speed{0}", i)" style="width: 127px; height: 120px; float: left; margin: 20px"></div>
+                        <div id="@string.Format("container-rpm{0}", i)" style="width: 127px; height: 120px; float: left; margin: 20px"></div>
+                    </fieldset>
+</div>
+
+</form>
     </div>
-    
+
 
 }
             <!--

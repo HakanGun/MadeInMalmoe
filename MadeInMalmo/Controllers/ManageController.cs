@@ -10,7 +10,7 @@ using MadeInMalmo.Models;
 
 namespace MadeInMalmo.Controllers
 {
-    [Authorize]
+ //   [Authorize]
     public class ManageController : Controller
     {
         public ManageController()

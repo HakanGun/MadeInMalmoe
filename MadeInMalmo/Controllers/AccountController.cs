@@ -12,7 +12,7 @@ using MadeInMalmo.Models;
 
 namespace MadeInMalmo.Controllers
 {
-    [Authorize]
+ //   [Authorize]
     public class AccountController : Controller
     {
         private ApplicationUserManager _userManager;

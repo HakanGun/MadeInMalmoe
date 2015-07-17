@@ -52,13 +52,13 @@ window.common = (function () {
             title: null,
 
             pane: {
-                center: ['50%', '85%'],
-                size: '140%',
+                center: ['60%', '90%'],
+                size: '110%',
                 startAngle: -90,
                 endAngle: 90,
                 background: {
                     backgroundColor: (Highcharts.theme && Highcharts.theme.background2) || '#EEE',
-                    innerRadius: '70%',
+                    innerRadius: '60%',
                     outerRadius: '100%',
                     shape: 'arc'
                 }
@@ -167,7 +167,7 @@ window.common = (function () {
                     data: [projects[ind].reportedSum],
                     dataLabels: {
                         format: '<div style="text-align:center"><span style="font-size:25px;color:' +
-                            ((Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black') + '">{y:.2f}</span><br/>' +
+                            ((Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black') + '">{y:.0f}</span><br/>' +
                                '<span style="font-size:12px;color:silver">kr</span></div>'
                     },
                     tooltip: {
