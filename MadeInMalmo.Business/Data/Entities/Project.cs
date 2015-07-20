@@ -23,5 +23,13 @@ namespace MadeInMalmo.Business.Data.Entities
         public decimal OriginalPrice { get; set; }
 
         public bool UseProjectHourPrice { get; set; }
+
+        public IList<ProjectBudget> ProjectBudgets { get; set; }
+
+        public IList<ProjectEstimate> ProjectEstimates { get; set; }
+
+        public IList<ProjectEmployee> ProjectEmployees { get; set; }
+
+        public ProjectCalculation ProjectCalculations { get; set; }
     }
 }

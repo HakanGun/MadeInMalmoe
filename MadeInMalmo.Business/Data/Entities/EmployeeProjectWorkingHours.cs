@@ -17,5 +17,9 @@ namespace MadeInMalmo.Business.Data.Entities
         public DateTime DateWorked { get; set; }
 
         public decimal WorkedHours { get; set; }
+
+        public decimal InvoicedHours { get; set; }
+
+        public decimal InvoicedPricePerHour { get; set; }
     }
 }

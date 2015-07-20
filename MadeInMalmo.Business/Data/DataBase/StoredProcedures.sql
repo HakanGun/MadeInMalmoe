@@ -69,9 +69,9 @@ END
 GO
 
 
-if exists(select * from sys.objects where name='GetTotalEmployeeWorkingHours' and type = 'p')
+if exists(select * from sys.objects where name='GetEmployeeProjectWorkingHours' and type = 'p')
 BEGIN
-DROP PROCEDURE [dbo].GetTotalEmployeeWorkingHours
+DROP PROCEDURE [dbo].GetEmployeeProjectWorkingHours
 END
 GO
 
@@ -79,12 +79,62 @@ SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-CREATE PROCEDURE dbo.GetTotalEmployeeWorkingHours
+CREATE PROCEDURE dbo.GetEmployeeProjectWorkingHours
+	@ProjectId int,
+    @EmployeeId int
+AS
+BEGIN
+	SET NOCOUNT ON;
+	select * from EmployeeProjectWorkingHours 
+    where ProjectId = @ProjectId and EmployeeId = @EmployeeId
+
+
+END
+GO
+
+
+if exists(select * from sys.objects where name='GetEmployeesForProject' and type = 'p')
+BEGIN
+DROP PROCEDURE [dbo].GetEmployeesForProject
+END
+GO
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE dbo.GetEmployeesForProject
 	@ProjectId int
 AS
 BEGIN
 	SET NOCOUNT ON;
-	select * from EmployeeProjectWorkingHours where ProjectId = @ProjectId
+	select * from Employee e
+	inner join EmployeeProject ep on ep.EmployeeId = e.EmployeeId  
+    where ep.ProjectId = @ProjectId
+
+
+END
+GO
+
+if exists(select * from sys.objects where name='GetEmployeeProjectPlan' and type = 'p')
+BEGIN
+DROP PROCEDURE [dbo].GetEmployeeProjectPlan
+END
+GO
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE dbo.GetEmployeeProjectPlan
+	@ProjectId int,
+	@EmployeeId int
+AS
+BEGIN
+	SET NOCOUNT ON;
+	select * from EmployeeProjectPlan epp
+	inner join EmployeeProject ep on ep.EmployeeProjectId = epp.EmployeeProjectId  
+    where ep.ProjectId = @ProjectId AND ep.EmployeeId = @EmployeeId
 
 
 END

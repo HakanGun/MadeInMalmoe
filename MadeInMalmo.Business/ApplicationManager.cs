@@ -3,15 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MadeInMalmo.Business.Data;
 using MadeInMalmo.Business.Data.Entities;
 
 namespace MadeInMalmo.Business
 {
     public class ApplicationManager
     {
+        private DataAccess data;
+
         public ApplicationManager()
         {
             // To do, initiate data layer class etc.
+            data = new DataAccess();
         }
 
         public IList<ProjectStatusOverview> GetOverviewData(int employeeId)
@@ -32,6 +36,195 @@ namespace MadeInMalmo.Business
             item1.WorkdaysTotal = 80;
 
             result.Add(item1);
+
+            return result;
+        }
+
+        private void CalculateProject(Project project)
+        {
+            project.ProjectCalculations = new ProjectCalculation();
+
+            // Some of the code in this method is redundant on purpose to make it easier to separate the different calculations.
+            #region CalculatedEstimatedRemainingHoursUntilDone
+            // CalculatedEstimatedRemainingHoursUntilDone
+
+            // Get latest estimate
+            var latestestimate = project.ProjectEstimates.OrderByDescending(x => x.Date).FirstOrDefault();
+            decimal totalWorkedHours = 0;
+
+            if (latestestimate == null)
+            {
+                // If there are no estimate since project start, then use the original estimated hours minus the number of worked hours
+                foreach (var employee in project.ProjectEmployees)
+                {
+                    totalWorkedHours += employee.ProjectEmployeeWorkingHours.Sum(p => p.WorkedHours);
+                }
+
+                project.ProjectCalculations.CalculatedEstimatedRemainingHoursUntilDone = project.OriginalHours - totalWorkedHours;
+            }
+            else
+            {
+                foreach (var employee in project.ProjectEmployees)
+                {
+                    // Also count hours from the same day as the estimate was done. (Impossible to know if these where part of the estimate or not.)
+                    totalWorkedHours += employee.ProjectEmployeeWorkingHours.Where(p => p.DateWorked > latestestimate.Date).Sum(p => p.WorkedHours);
+                }
+
+                project.ProjectCalculations.CalculatedEstimatedRemainingHoursUntilDone = latestestimate.EstimateHoursLeft - totalWorkedHours;
+            }
+
+            //------------------------------------------------------------------------------------------------------
+            #endregion
+
+            #region AvailableEmployeeProjectPlanHoursUntilDeadline
+            //AvailableEmployeeProjectPlanHoursUntilDeadline
+            decimal availableEmployeeProjectPlanHoursUntilDeadline = 0;
+            foreach (var employee in project.ProjectEmployees)
+            {
+                foreach (var plan in employee.EmployeeProjectPlans)
+                {
+                    var startdate = plan.StartDate > DateTime.Today ? plan.StartDate : DateTime.Today;
+
+                    // Improvement! Get the dealine from project or latest budget instead of assuming endDate not after deadline.
+                    var numberOfDaysInPeriod = this.GetNumberOfWeekdaysBeweenDates(startdate, plan.EndDate);
+                    availableEmployeeProjectPlanHoursUntilDeadline += numberOfDaysInPeriod * plan.AverageDailyHours;
+                }
+            }
+
+            project.ProjectCalculations.AvailableEmployeeProjectPlanHoursUntilDeadline = availableEmployeeProjectPlanHoursUntilDeadline;
+
+            //------------------------------------------------------------------------------------------------------
+            #endregion
+
+            #region CalculatedEstimatedRemainingMoneyCostUntilFinished
+            //CalculatedEstimatedRemainingMoneyCostUntilFinished
+
+            // First, wee need to calculate an average capacity utilization rate. This should take into account how many hours
+            // each employee has available. 
+            // Formula: (hours for each employee * the capacity utilization rate for the employee) / total number of available hours
+            decimal calculatedCapacityUtilizationRateInAverage = 1.0M;
+            decimal availableProjectPlanHoursWithCapacityUtilizationRate = 0;
+
+            // Defensive - if there are no more hours until deadline then use 100 %
+            if (project.ProjectCalculations.AvailableEmployeeProjectPlanHoursUntilDeadline > 0)
+            { 
+                foreach (var employee in project.ProjectEmployees)
+                {
+                    foreach (var plan in employee.EmployeeProjectPlans)
+                    {
+                        var startdate = plan.StartDate > DateTime.Today ? plan.StartDate : DateTime.Today;
+
+                        // Improvement! Get the dealine from project or latest budget instead of assuming endDate not after deadline.
+                        var numberOfDaysInPeriod = this.GetNumberOfWeekdaysBeweenDates(startdate, plan.EndDate);
+                        availableProjectPlanHoursWithCapacityUtilizationRate += numberOfDaysInPeriod * plan.AverageDailyHours * employee.CapacityUtilizationRate / 100;
+                    }
+                }
+
+                calculatedCapacityUtilizationRateInAverage = availableProjectPlanHoursWithCapacityUtilizationRate / project.ProjectCalculations.AvailableEmployeeProjectPlanHoursUntilDeadline;
+            }
+
+            if (project.UseProjectHourPrice)
+            {
+                project.ProjectCalculations.CalculatedEstimatedRemainingMoneyCostUntilFinished = 
+                    project.ProjectCalculations.CalculatedEstimatedRemainingHoursUntilDone * 
+                    calculatedCapacityUtilizationRateInAverage * 
+                    project.PricePerHour;
+            }
+            else
+            {
+                // Calculate average price per hour
+                decimal workHoursTimesHourPrice = 0;
+                foreach (var employee in project.ProjectEmployees)
+                {
+                    foreach (var plan in employee.EmployeeProjectPlans)
+                    {
+                        var startdate = plan.StartDate > DateTime.Today ? plan.StartDate : DateTime.Today;
+
+                        // Improvement! Get the dealine from project or latest budget instead of assuming endDate not after deadline.
+                        var numberOfDaysInPeriod = this.GetNumberOfWeekdaysBeweenDates(startdate, plan.EndDate);
+                        workHoursTimesHourPrice += numberOfDaysInPeriod * plan.AverageDailyHours * employee.PricePerHour;
+                    }
+                }
+
+                // defensive - avoid division by zero
+                var averageHourPrice = 0M;
+                if (project.ProjectCalculations.AvailableEmployeeProjectPlanHoursUntilDeadline > 0)
+                {
+                    averageHourPrice = workHoursTimesHourPrice / project.ProjectCalculations.AvailableEmployeeProjectPlanHoursUntilDeadline;
+                }
+
+                project.ProjectCalculations.CalculatedEstimatedRemainingMoneyCostUntilFinished =
+                    project.ProjectCalculations.CalculatedEstimatedRemainingHoursUntilDone *
+                    calculatedCapacityUtilizationRateInAverage *
+                    averageHourPrice;
+            }
+
+
+            //------------------------------------------------------------------------------------------------------
+            #endregion
+
+            #region RemainingMoneyFromBudget
+            // RemainingMoneyFromBudget
+
+            // Get last budget for project
+            var lastBudget = project.ProjectBudgets.OrderByDescending(x => x.CreatedDate).FirstOrDefault();
+            var lastBudgetMoney = lastBudget == null ? project.OriginalPrice : lastBudget.BudgetMoney;
+            var totalMoneyForInvoice = 0.0M;
+
+            foreach (var employee in project.ProjectEmployees)
+            {
+                foreach (var workingHours in employee.ProjectEmployeeWorkingHours)
+                {
+                    totalMoneyForInvoice += workingHours.InvoicedHours * workingHours.InvoicedPricePerHour;
+                }
+            }
+
+            project.ProjectCalculations.RemainingMoneyFromBudget = lastBudgetMoney - totalMoneyForInvoice;
+
+            #endregion
+        }
+
+        private IList<Project> GetProjectDataForEmployee(int employeeId)
+        {
+            var projects = this.data.GetProjectForEmployee(employeeId);
+
+            foreach (var project in projects)
+            {
+                // Get Budget
+                project.ProjectBudgets = this.data.GetBudgetsForProject(project.ProjectId);
+
+                // Get Estimate
+                project.ProjectEstimates = this.data.GetEstimatesForProject(project.ProjectId);
+
+                // Get all employees 
+                project.ProjectEmployees = this.data.GetProjectEmloyees(project.ProjectId);
+
+                foreach (var employee in project.ProjectEmployees)
+                {
+                    // Get EmployeeProjectPlans
+                    employee.EmployeeProjectPlans = this.data.GetEmployeeProjectPlans(employee.ProjectId, employee.EmployeeId);
+
+                    // GetEmployeeProjectWorkingHours
+                    employee.ProjectEmployeeWorkingHours = this.data.GetEmployeeProjectWorkingHoursForProject(employee.ProjectId, employee.EmployeeId);
+                }
+            }
+
+            return projects;
+        }
+
+        private int GetNumberOfWeekdaysBeweenDates(DateTime startDate, DateTime endDate)
+        {
+            // Improvement! This method should also take into account public holidays. Implement if there is time left....
+            int result = 0;
+            var ts = endDate - startDate;
+            for (int i = 0; i < ts.TotalDays; i++)
+            {
+                var cur = startDate.AddDays(i);
+                if (cur.DayOfWeek != DayOfWeek.Saturday && cur.DayOfWeek != DayOfWeek.Sunday)
+                {
+                    result ++;
+                }
+            }
 
             return result;
         }

@@ -92,7 +92,7 @@ CREATE TABLE [dbo].[Employee](
 	[EmployeeId] [int] IDENTITY(1,1) NOT NULL,
 	[FirstName] [nvarchar](50) NOT NULL,
 	[LastName] [nvarchar](50) NOT NULL,
-	[DailyWorkingHours] [decimal](4, 2) NOT NULL,
+	--[DailyWorkingHours] [decimal](4, 2) NOT NULL,
  CONSTRAINT [PK_Employee] PRIMARY KEY CLUSTERED 
 (
 	[EmployeeId] ASC
@@ -129,7 +129,7 @@ CREATE TABLE [dbo].[ProjectEstimate](
 	[ProjectId] [int] NOT NULL,
 	[Date] [date] NOT NULL,
 	[EstimateHours] [decimal](18, 2) NULL,
-	[EstimatePrice] [decimal](18, 2) NULL,
+	--[EstimatePrice] [decimal](18, 2) NULL,
  CONSTRAINT [PK_NewProjectEstimate] PRIMARY KEY CLUSTERED 
 (
 	[ProjectEstimateId] ASC
@@ -167,7 +167,9 @@ CREATE TABLE [dbo].[EmployeeProjectWorkingHours](
 	[EmployeeId] [int] NOT NULL,
 	[ProjectId] [int] NOT NULL,
 	[Date] [date] NOT NULL,
-	[WorkedHours] [decimal](2, 2) NOT NULL,
+	[WorkedHours] [decimal](7, 2) NOT NULL,
+	[InvoicedHours] [decimal](7, 2) NOT NULL,
+	[InvoicedPricePerHour] [decimal](7, 2) NOT NULL,
  CONSTRAINT [PK_EmployeeProjectWorkingHours_1] PRIMARY KEY CLUSTERED 
 (
 	[EmployeeProjectWorkingHoursId] ASC
@@ -180,14 +182,27 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[EmployeeProject](
+    [EmployeeProjectId] [int] IDENTITY(1,1) NOT NULL,
 	[EmployeeId] [int] NOT NULL,
 	[ProjectId] [int] NOT NULL,
-	[AverageDailyHours] [decimal](4, 2) NOT NULL,
+	--[AverageDailyHours] [decimal](4, 2) NOT NULL,
 	[PricePerHour] [decimal](7, 2) NULL,
+    [CapacityUtilizationRate] int NOT NULL,
  CONSTRAINT [PK_EmployeeProject] PRIMARY KEY CLUSTERED 
 (
-	[EmployeeId] ASC,
-	[ProjectId] ASC
+	[EmployeeProjectId] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+CREATE TABLE [dbo].[EmployeeProjectPlan](
+    [EmployeeProjectPlanId] [int] IDENTITY(1,1) NOT NULL,
+	[EmployeeProjectId] [int] NOT NULL,
+    [StartDate] [date] NOT NULL,
+    [EndDate] [date] NOT NULL,
+	[AverageDailyHours] [decimal](4, 2) NOT NULL,
+ CONSTRAINT [PK_EmployeeProjectPlan] PRIMARY KEY CLUSTERED 
+(
+	[EmployeeProjectPlanId] ASC
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
@@ -225,4 +240,10 @@ ALTER TABLE [dbo].[EmployeeProject]  WITH CHECK ADD  CONSTRAINT [FK_EmployeeProj
 REFERENCES [dbo].[Project] ([ProjectId])
 GO
 ALTER TABLE [dbo].[EmployeeProject] CHECK CONSTRAINT [FK_EmployeeProject_Project]
+GO
+/****** Object:  ForeignKey [FK_EmployeeProjectPlan_EmployeeProject]    Script Date: 06/11/2015 21:38:25 ******/
+ALTER TABLE [dbo].[EmployeeProjectPlan]  WITH CHECK ADD  CONSTRAINT [FK_EmployeeProjectPlan_EmployeeProject] FOREIGN KEY([EmployeeProjectId])
+REFERENCES [dbo].[EmployeeProject] ([EmployeeProjectId])
+GO
+ALTER TABLE [dbo].[EmployeeProjectPlan] CHECK CONSTRAINT [FK_EmployeeProjectPlan_EmployeeProject]
 GO

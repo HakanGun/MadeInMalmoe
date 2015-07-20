@@ -50,9 +50,12 @@
   <ItemGroup>
     <Compile Include="ApplicationManager.cs" />
     <Compile Include="Data\DataAccess.cs" />
+    <Compile Include="Data\Entities\EmployeeProjectPlan.cs" />
     <Compile Include="Data\Entities\EmployeeProjectWorkingHours.cs" />
     <Compile Include="Data\Entities\Project.cs" />
     <Compile Include="Data\Entities\ProjectBudget.cs" />
+    <Compile Include="Data\Entities\ProjectCalculation.cs" />
+    <Compile Include="Data\Entities\ProjectEmployee.cs" />
     <Compile Include="Data\Entities\ProjectEstimate.cs" />
     <Compile Include="Data\Entities\ProjectStatusOverview.cs" />
     <Compile Include="Data\Entities\StatusIndicatorEnum.cs" />
