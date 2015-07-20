@@ -5,7 +5,7 @@ using System.Web.Mvc;
 
 namespace MadeInMalmo.Controllers
 {
-    [Authorize]
+   // [Authorize]
     public class HomeController : Controller
     {
         public ActionResult Index()

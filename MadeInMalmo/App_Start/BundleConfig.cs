@@ -45,7 +45,14 @@ namespace MadeInMalmo
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                  "~/Content/bootstrap.css",
-                 "~/Content/Site.css"));
+                 "~/Content/Site.css", 
+                 "~/Content/_mixins.css",
+                 "~/Content/_variables.css",
+                 "~/Content/buttons - dropdowns.css",
+                 "~/Content/docs.css",
+                 "~/Content/forms.css",
+                 "~/Content/glyphicons.css",
+                 "~/Content/login.css"));
 
             // Set EnableOptimizations to false for debugging. For more information,
             // visit http://go.microsoft.com/fwlink/?LinkId=301862
