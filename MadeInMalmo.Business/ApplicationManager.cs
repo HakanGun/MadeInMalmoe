@@ -22,22 +22,85 @@ namespace MadeInMalmo.Business
         {
             var result = new List<ProjectStatusOverview>();
 
-            // Dummy data....
-            var item1 = new ProjectStatusOverview();
-            item1.Budget = 150000M;
-            item1.BudgetAdjusted = false;
-            item1.BudgetStatus = StatusIndicatorEnum.green;
-            item1.BudgetUsed = 85000M;
-            item1.DeadlineAdjusted = false;
-            item1.DeadlineStatus = StatusIndicatorEnum.green;
-            item1.ProjectDisplayName = "MadeInMalmö";
-            item1.ProjectId = 1;
-            item1.WorkdaysPassed = 35;
-            item1.WorkdaysTotal = 80;
+            var projects = this.GetProjectDataForEmployee(employeeId);
+            foreach (var project in projects)
+            {
+                var projectStatusOverview = new ProjectStatusOverview();
+                projectStatusOverview.availableEmployeeProjectPlanHoursUntilDeadline = project.ProjectCalculations.AvailableEmployeeProjectPlanHoursUntilDeadline;
+                var lastBudget = project.ProjectBudgets.OrderByDescending(x => x.CreatedDate).FirstOrDefault();
+                projectStatusOverview.budgetPrice = lastBudget == null ? project.OriginalPrice : lastBudget.BudgetMoney;
+                projectStatusOverview.calculatedEstimatedRemainingHoursUntilDone = project.ProjectCalculations.CalculatedEstimatedRemainingHoursUntilDone;
+                projectStatusOverview.calculatedEstimatedRemainingMoneyCostUntilFinished = project.ProjectCalculations.CalculatedEstimatedRemainingMoneyCostUntilFinished;
+                projectStatusOverview.DeadlineAdjusted = false; // Todo (if needed)!
+                projectStatusOverview.projectID = project.ProjectId;
+                projectStatusOverview.projectName = project.ProjectName;
+                projectStatusOverview.remainingMoneyFromBudget = project.ProjectCalculations.RemainingMoneyFromBudget;
+                projectStatusOverview.reportedHours = 0; //Todo (if needed)!
+            }
 
+            // Dummy data since database is empty...
+            var item1 = GetDummyProject1();
             result.Add(item1);
 
+            // Calculate some values. Could be moved to the entity instead in "real" version.
+            foreach (var projectStatusOverview in result)
+            {
+                this.CalculateStatusColorValuesForProject(projectStatusOverview);
+            }
+
             return result;
+        }
+
+        private ProjectStatusOverview GetDummyProject1()
+        {
+            // Dummy data.... Todo: use a Project instead and a convertor, and eventually get data from the database instead.
+            var item1 = new ProjectStatusOverview();
+            item1.budgetPrice = 150000M;
+            //item1.BudgetAdjusted = false;
+            //item1.BudgetStatus = StatusIndicatorEnum.green;
+            item1.reportedSum = 85000M;
+            item1.DeadlineAdjusted = false;
+            //item1.DeadlineStatus = StatusIndicatorEnum.green;
+            item1.projectName = "MadeInMalmö";
+            item1.projectID = 1;
+            //item1.WorkdaysPassed = 35;
+            //item1.budgethours = 80;
+            item1.reportedHours = 30;
+
+            // the calculated values for project
+            item1.calculatedEstimatedRemainingMoneyCostUntilFinished = 70000M;
+            item1.calculatedEstimatedRemainingHoursUntilDone = 45;
+            item1.availableEmployeeProjectPlanHoursUntilDeadline = 40;
+
+            return item1;
+        }
+
+        private void CalculateStatusColorValuesForProject(ProjectStatusOverview projectStatusOverview)
+        {
+            #region Money
+            // Green: the percentage of the gauge where the calculated remaining cost per today is equal to the remaining budget money
+            // Calculated as (budget - estimatedRemainingCost)/budget
+            projectStatusOverview.greenstopMoney = (projectStatusOverview.budgetPrice - projectStatusOverview.calculatedEstimatedRemainingMoneyCostUntilFinished) / projectStatusOverview.budgetPrice;
+
+            // Yellow: the percentage of the gauge where the calculated remaining cost per today is 10% more than the remaining budget money
+            // Calculated as (budget - estimatedRemainingCost) * 1.1 /budget
+            projectStatusOverview.yellowstopMoney = (projectStatusOverview.budgetPrice - projectStatusOverview.calculatedEstimatedRemainingMoneyCostUntilFinished) * 1.1M / projectStatusOverview.budgetPrice;
+
+            // Orange: the percentage of the gauge where the calculated remaining cost per today is 20% more than the remaining budget money
+            // Calculated as (budget - estimatedRemainingCost) * 1.2 /budget
+            projectStatusOverview.orangestopMoney = (projectStatusOverview.budgetPrice - projectStatusOverview.calculatedEstimatedRemainingMoneyCostUntilFinished) * 1.2M / projectStatusOverview.budgetPrice;
+
+            // Red: the percentage of the gauge where the calculated remaining cost per today is 30% more than the remaining budget money
+            // Calculated as (budget - estimatedRemainingCost) * 1.3 /budget
+            projectStatusOverview.redstopMoney = (projectStatusOverview.budgetPrice - projectStatusOverview.calculatedEstimatedRemainingMoneyCostUntilFinished) * 1.3M / projectStatusOverview.budgetPrice;
+
+            #endregion
+
+            #region Time
+            // budgetHours used for the gauge is availableHoursUntilDeadline + estimatedRemainingHours! (Misleading variable name...
+            projectStatusOverview.budgethours = projectStatusOverview.calculatedEstimatedRemainingHoursUntilDone + projectStatusOverview.availableEmployeeProjectPlanHoursUntilDeadline;
+
+            #endregion  
         }
 
         private void CalculateProject(Project project)
@@ -207,6 +270,8 @@ namespace MadeInMalmo.Business
                     // GetEmployeeProjectWorkingHours
                     employee.ProjectEmployeeWorkingHours = this.data.GetEmployeeProjectWorkingHoursForProject(employee.ProjectId, employee.EmployeeId);
                 }
+
+                this.CalculateProject(project);
             }
 
             return projects;

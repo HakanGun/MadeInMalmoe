@@ -231,6 +231,7 @@ namespace MadeInMalmo.Business.Data
         private Database CreateDatabase()
         {
             DatabaseProviderFactory factory = new DatabaseProviderFactory();
+
             return factory.Create("MadeInMalmoDB");
         }
 
