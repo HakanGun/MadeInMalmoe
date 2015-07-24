@@ -1,67 +1,146 @@
-﻿<!-- ko with: home -->
-<!--<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS, and JavaScript.</p>
-    <p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
-    div {
-    width: 300px;
-    padding: 25px;
-    border: 25px solid navy;
-    margin: 25px;
-}
--->
-@{
-    var numberOfProjects = (int)ViewData["NumberOfProjects"];
-}
+﻿
+<link href="~/Content/nc.css" rel="stylesheet" />
+<link href="~/Content/navbar.css" rel="stylesheet" />
+<link href="~/Content/_mixins.css" rel="stylesheet" />
+<link href="~/Content/_variables.css" rel="stylesheet" />
+<link href="~/Content/glyphicons.css" rel="stylesheet" />
+<link href="~/Content/login.css" rel="stylesheet" />
+<link href="~/Content/Site.css" rel="stylesheet" />
+<link href="~/Content/vertmenu.css" rel="stylesheet" />
 
-@for (var i = 1; i <= 10; i++)
-{
-    <div class="col-md-4">
-        <form>
-            <!--     </div>-->
-           <!-- <fieldset style="width: 425px; height: 240px; margin: 4px; float:left; border: 2px solid navy">-->
-                <!-- <legend>Projekt @i</legend>-->
-                <!--   <div style="width: 400px; height: 250px; margin: 0 4px 7px 4px 2px">-->
-                <div id ="rcorners2">
-                    <fieldset>
-                        <legend id="@string.Format("legend{0}", i)" style="margin: 5px;">No data</legend>@*Projekt @i</legend>*@
-                        <div id="@string.Format("container-speed{0}", i)" style="width: 127px; height: 120px; float: left; margin-bottom: 20px; margin-left: 20px; margin-right: 20px; margin-top: 0px"></div>
-                        <div id="@string.Format("container-rpm{0}", i)" style="width: 127px; height: 120px; float: left; margin: 20px;"></div>
-                    </fieldset>
-</div>
 
-</form>
+    <body class="greyPattern-backgr">
+
+        <header class="navbar navbar-fixed-top container no-side-margin hidden-xs desktop-header">
+            <div class="navbar-second-level" role="navigation">
+                @*<div class="product-header ng-isolate-scope" product-header="">
+                        <div class="dropdown" dropdown="">
+                            <a class="product-link dropdown-toggle" data-ng-class="{'empty-online-services':services.length == 0}" dropdown-toggle="" aria-haspopup="true" aria-expanded="false"><span class="ng-binding">Visma eAccounting Time</span></a>
+
+                        </div>
+                    </div>*@
+                @*<nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+                        <ul class="nav navbar-nav navbar-right">
+                            <li notification-popover="" class="ng-isolate-scope"><a id="globalNotification" class="notification"></a></li>
+                            <li>
+                                <a class="help" data-ng-click="openSupportPanel()"></a>
+                            </li>
+                            <li class="header-search">
+                                <input type="text" class="search-field ng-pristine ng-valid" data-ng-model="searchKey" data-ng-keypress="searchSupportPanel($event)" placeholder="Søk i hjelpen">
+                                <span class="search icon" data-ng-click="openSupportPanel()"></span>
+                            </li>
+                            <li class="header-company" style="">
+                                <a class="company-link ng-isolate-scope" id="company-link" company-link="" company-info="companyInfo"><span class="ng-binding">timetest</span></a>
+                            </li>
+                        </ul>
+                    </nav>*@
+            </div>
+        </header>
+        <div class="wrapper blue_backgrounds" style="height: 100%">
+            <div class="no-padding side-menu collapse in sidebar-offcanvas">
+
+                <data-vert-menu data-items="vertMenuItems" data-item-id="selectedMenuItemId" data-sub-item-id="selectedSubItemId" data-toggle="toggleOffCanvas" data-call-back="setSelectedPageTitle" class="ng-isolate-scope">
+                    <div class="bs-sidebar static-nav icons-nav panel affix-top" style="overflow:auto;">
+                        <div class="heading" style="z-index: 2;"></div>
+                        <ul class="nav bs-sidenav">
+                            <!-- ngRepeat: menuItem in menuItems -->
+                            <li data-ng-repeat="menuItem in menuItems" id="timeRegistration" data-ng-class="getClasses(menuItem)" class="ng-scope active">
+                                <a href="/time/registration" class="timesheetMenuLink noChildren" data-ng-class="{'noChildren': menuItem.childNodes.length == 0}" data-ng-click="toggleSubMenu(menuItem)" data-i18n="menu.menu_TimeRegistration">Project overview</a>
+                                <ul class="nav">
+                                    <!-- ngRepeat: subMenuItem in menuItem.childNodes -->
+                                </ul>
+                        </ul>
+                    </div>
+                </data-vert-menu>
+            </div>
+            <div class="content-wrap fixed-block full-height">
+                <div class="main-content no-padding hide-overflow row-offcanvas row-offcanvas-left full-height" ng-class="rowOffCanvasClass">
+                    <div class="content-wrap fixed-block full-height">
+                        <div class="content-cover ng-hide" ng-show="isMenuActive" ng-click="!isMenuActive || toggleOffCanvas()"></div>
+
+
+                        <!-- ngView:  -->
+                        <div ng-view="visible-md visible lg" class="view-content ng-scope">
+                            <!--Mobile view-->
+                            <div ng-view class="visible-xs mobileview ng-scope">
+                                <header class="navbar navbar-fixed-top container no-side-margin mobile-header"></header>
+
+                            </div>
+                            <!--Desktop view-->
+                            <div class="visible-md visible-lg visible-sm desktopview ng-scope">
+                                <section class="content-block grey-bar" style="height:1000px; position:relative;">
+                                    <h1>
+                                        <span>Projects</span>
+                                    </h1>
+                                    <div class="app-content" style="position:relative;min-height:669px;">
+
+                                        @{
+                                            var numberOfProjects = (int)ViewData["NumberOfProjects"];
+                                        }
+
+                                        @for (var i = 1; i <= 10; i++)
+                                        {
+                                            <div class="col-md-4">
+                                                <form>
+                                                    <!--     </div>-->
+                                                    <!-- <fieldset style="width: 425px; height: 240px; margin: 4px; float:left; border: 2px solid navy">-->
+                                                    <!-- <legend>Projekt @i</legend>-->
+                                                    <!--   <div style="width: 400px; height: 250px; margin: 0 4px 7px 4px 2px">-->
+                                                    <div id="rcorners2">
+                                                        <fieldset>
+                                                            <legend id="@string.Format("legend{0}", i)" style="margin: 5px;">No data</legend>@*Projekt @i</legend>*@
+                                                            <div id="@string.Format("container-speed{0}", i)" style="width: 127px; height: 120px; float: left; margin-bottom: 20px; margin-left: 20px; margin-right: 20px; margin-top: 0px"></div>
+                                                            <div id="@string.Format("container-rpm{0}", i)" style="width: 127px; height: 120px; float: left; margin: 20px;"></div>
+                                                        </fieldset>
+                                                    </div>
+
+                                                </form>
+                                            </div>
+
+                                        }
+
+                                    </div>
+                                </section>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+    </body>
+    <!--
+                <div class="col-md-4">
+                    <h2>Your information</h2>
+                    <p>This section shows how you can call ASP.NET Web API to get the user details.</p>
+                    <p data-bind="text: myHometown"></p>
+
+                    <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=273732">Learn more &raquo;</a></p>
+                </div>
+
+                <div class="col-md-4">
+                    <h2>Getting started</h2>
+                    <p>
+                        ASP.NET Single Page Application (SPA) helps you build applications that include significant client-side interactions using HTML, CSS, and JavaScript.
+                        It's now easier than ever before to getting started writing highly interactive web applications.
+                    </p>
+                    <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=273732">Learn more &raquo;</a></p>
+                </div>
+
+                <div class="col-md-4">
+                    <h2>Web Hosting</h2>
+                    <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
+                    <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+                </div>
     </div>
-    
-    
 
-
-}
-
-            <!--
-            <div class="col-md-4">
-                <h2>Your information</h2>
-                <p>This section shows how you can call ASP.NET Web API to get the user details.</p>
-                <p data-bind="text: myHometown"></p>
-
-                <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=273732">Learn more &raquo;</a></p>
-            </div>
-
-            <div class="col-md-4">
-                <h2>Getting started</h2>
-                <p>
-                    ASP.NET Single Page Application (SPA) helps you build applications that include significant client-side interactions using HTML, CSS, and JavaScript.
-                    It's now easier than ever before to getting started writing highly interactive web applications.
-                </p>
-                <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=273732">Learn more &raquo;</a></p>
-            </div>
-
-            <div class="col-md-4">
-                <h2>Web Hosting</h2>
-                <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-                <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-            </div>
-</div>
-
-            <!-- /ko -->
+                <!-- /ko -->

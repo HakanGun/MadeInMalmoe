@@ -37,8 +37,9 @@
 	background: url(../img/visma_menu.png) repeat-x scroll 0 -105px;
 	}
 
-.navbar-brand {
-    background: url(../img/UX_logo_white.png) no-repeat scroll center center rgba(0, 0, 0, 0);
+.navbar-brand
+ {
+    /*background: url(../img/UX_logo_white.png) no-repeat scroll center center rgba(0, 0, 0, 0);*/
     display: block;
     float: none;
     height: 38px;
@@ -75,7 +76,8 @@
     text-shadow: 0px 1px 0 #000000;
 	line-height:18px;
 	}
-	
+
+
 .navbar-default .nav > li.active + li,
 .navbar-default .nav > li.active, 
 .navbar-default .nav > .dropdown.open, 

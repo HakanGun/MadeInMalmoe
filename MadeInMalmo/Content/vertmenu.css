@@ -220,7 +220,7 @@
 	}
 	
 .bs-sidebar.icons-nav li a:after {
-	background: url(../eAccounting/styles/sidemenu_arrow.png) 0 0 no-repeat transparent;
+	/*background: url(../img/sidemenu_arrow.png) 0 0 no-repeat transparent;*/
 	content: "";
     height: 9px;
     position: absolute;

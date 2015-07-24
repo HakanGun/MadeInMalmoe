@@ -52,6 +52,7 @@ namespace MadeInMalmo
                  "~/Content/docs.css",
                  "~/Content/forms.css",
                  "~/Content/glyphicons.css",
+                 "~/Content/nc.css",
                  "~/Content/login.css"));
 
             // Set EnableOptimizations to false for debugging. For more information,
