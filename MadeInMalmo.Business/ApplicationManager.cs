@@ -46,6 +46,8 @@ namespace MadeInMalmo.Business
             foreach (var projectStatusOverview in result)
             {
                 this.CalculateStatusColorValuesForProject(projectStatusOverview);
+                // Todo! Add to calculations!
+                projectStatusOverview.deadlineStatus = StatusIndicatorEnum.green;
             }
 
             return result;

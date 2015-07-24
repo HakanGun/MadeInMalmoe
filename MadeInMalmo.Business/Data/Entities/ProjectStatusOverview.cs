@@ -18,7 +18,7 @@ namespace MadeInMalmo.Business.Data.Entities
 
         public bool DeadlineAdjusted { get; set; }
 
-        //public StatusIndicatorEnum DeadlineStatus { get; set; }
+        public StatusIndicatorEnum deadlineStatus { get; set; }
 
         public decimal budgetPrice { get; set; }
 
