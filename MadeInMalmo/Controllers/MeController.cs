@@ -14,7 +14,7 @@ using MadeInMalmo.Models;
 
 namespace MadeInMalmo.Controllers
 {
-    [Authorize]
+ //   [Authorize]
     public class MeController : ApiController
     {
         private ApplicationUserManager _userManager;
