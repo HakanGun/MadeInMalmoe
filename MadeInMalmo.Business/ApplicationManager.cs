@@ -46,8 +46,6 @@ namespace MadeInMalmo.Business
             foreach (var projectStatusOverview in result)
             {
                 this.CalculateStatusColorValuesForProject(projectStatusOverview);
-                // Todo! Add to calculations!
-                projectStatusOverview.deadlineStatus = StatusIndicatorEnum.green;
             }
 
             return result;
@@ -101,7 +99,24 @@ namespace MadeInMalmo.Business
             #region Time
             // budgetHours used for the gauge is availableHoursUntilDeadline + estimatedRemainingHours! (Misleading variable name...
             projectStatusOverview.budgethours = projectStatusOverview.calculatedEstimatedRemainingHoursUntilDone + projectStatusOverview.availableEmployeeProjectPlanHoursUntilDeadline;
-
+            var differenceHour = projectStatusOverview.availableEmployeeProjectPlanHoursUntilDeadline - projectStatusOverview.calculatedEstimatedRemainingHoursUntilDone;
+            if (differenceHour > 0)
+            {
+                projectStatusOverview.deadlineStatus = StatusIndicatorEnum.green;
+            }
+            else if (Math.Abs(differenceHour) < 0.1M * projectStatusOverview.availableEmployeeProjectPlanHoursUntilDeadline)
+            {
+                projectStatusOverview.deadlineStatus = StatusIndicatorEnum.yellow;
+            }
+            else if (Math.Abs(differenceHour) < 0.3M * projectStatusOverview.availableEmployeeProjectPlanHoursUntilDeadline)
+            {
+                projectStatusOverview.deadlineStatus = StatusIndicatorEnum.orange;
+            }
+            else
+            {
+                projectStatusOverview.deadlineStatus = StatusIndicatorEnum.red;
+            }
+            
             #endregion  
         }
 

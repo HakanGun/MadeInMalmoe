@@ -614,7 +614,7 @@ body.greyPattern-backgr { background: url(../img/bg_pattern.jpg) 0 0 repeat; }
 .custom-select-wrapper { position: relative; }
 
 .custom-select-wrapper:after {
-	background: url("https://eaccounting.vismaonline.com/content/images/dropdownarrow.png") no-repeat scroll 0 0;
+	background: url("../img/dropdownarrow.png") no-repeat scroll 0 0;
     content: "";
     height: 20px;
     padding: 0 0 2px;

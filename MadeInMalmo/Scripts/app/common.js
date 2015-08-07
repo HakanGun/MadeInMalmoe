@@ -66,7 +66,7 @@ window.common = (function () {
         $.ajax({
             type: "GET",
             url: "Home/getProjects",
-            async: false, 
+            async: true, 
             data: { userId: 1 },
             contentType: "application/json;charset=utf-8",
             dataType: "json",
@@ -132,15 +132,15 @@ window.common = (function () {
         
         //var projects = [];
         //var project1 = { projectID: 1, projectName: "Project 1", budgethours: 2000, budgetPrice: 90000, reportedHours: 100, reportedSum: 5000 };
-        var project2 = { projectID: 2, projectName: "Project 2", budgethours: 6000, budgetPrice: 500000, reportedHours: 200, reportedSum: 6000, availableEmployeeProjectPlanHoursUntilDeadline: 3600, calculatedEstimatedRemainingHoursUntilDone: 3500, deadlineStatus: 'green', greenstopMoney: 0.4,  yellowstopMoney: 0.5, orangestopMoney: 0.7, redstopMoney: 0.9 };
-        var project3 = { projectID: 3, projectName: "Project 3", budgethours: 5000, budgetPrice: 500000, reportedHours: 300, reportedSum: 7000, availableEmployeeProjectPlanHoursUntilDeadline: 3000, calculatedEstimatedRemainingHoursUntilDone: 2800, deadlineStatus: 'green', greenstopMoney: 0.4, yellowstopMoney: 0.5, orangestopMoney: 0.7, redstopMoney: 0.9 };
-        var project4 = { projectID: 4, projectName: "Project 4", budgethours: 3000, budgetPrice: 500000, reportedHours: 3000, reportedSum: 80000, availableEmployeeProjectPlanHoursUntilDeadline: 1550, calculatedEstimatedRemainingHoursUntilDone: 1500, deadlineStatus: 'green', greenstopMoney: 0.4, yellowstopMoney: 0.5, orangestopMoney: 0.7, redstopMoney: 0.9 };
-        var project5 = { projectID: 5, projectName: "Project 5", budgethours: 9000, budgetPrice: 500000, reportedHours: 500, reportedSum: 9000, availableEmployeeProjectPlanHoursUntilDeadline: 4000, calculatedEstimatedRemainingHoursUntilDone: 4200, deadlineStatus: 'yellow', greenstopMoney: 0.4, yellowstopMoney: 0.5, orangestopMoney: 0.7, redstopMoney: 0.9 };
-        var project6 = { projectID: 6, projectName: "Project 6", budgethours: 11000, budgetPrice: 500000, reportedHours: 600, reportedSum: 10000, availableEmployeeProjectPlanHoursUntilDeadline: 4800, calculatedEstimatedRemainingHoursUntilDone: 5000, deadlineStatus: 'orange', greenstopMoney: 0.4, yellowstopMoney: 0.5, orangestopMoney: 0.7, redstopMoney: 0.9 };
-        var project7 = { projectID: 6, projectName: "Project 7", budgethours: 15000, budgetPrice: 50000, reportedHours: 700, reportedSum: 110000, availableEmployeeProjectPlanHoursUntilDeadline: 9000, calculatedEstimatedRemainingHoursUntilDone: 8000, deadlineStatus: 'green', greenstopMoney: 0.4, yellowstopMoney: 0.5, orangestopMoney: 0.7, redstopMoney: 0.9 };
-        var project8 = { projectID: 6, projectName: "Project 8", budgethours: 300000, budgetPrice: 500000, reportedHours: 800, reportedSum: 12000, availableEmployeeProjectPlanHoursUntilDeadline: 120000, calculatedEstimatedRemainingHoursUntilDone: 130000, deadlineStatus: 'orange', greenstopMoney: 0.4, yellowstopMoney: 0.5, orangestopMoney: 0.7, redstopMoney: 0.9 };
-        var project9 = { projectID: 6, projectName: "Project 9", budgethours: 1000, budgetPrice: 500000, reportedHours: 900, reportedSum: 13000, availableEmployeeProjectPlanHoursUntilDeadline: 790, calculatedEstimatedRemainingHoursUntilDone: 750, deadlineStatus: 'green', greenstopMoney: 0.4, yellowstopMoney: 0.5, orangestopMoney: 0.7, redstopMoney: 0.9 };
-        var project10 = { projectID: 6, projectName: "Project 10", budgethours: 6000, budgetPrice: 500000, reportedHours: 1000, reportedSum: 14000, availableEmployeeProjectPlanHoursUntilDeadline: 1500, calculatedEstimatedRemainingHoursUntilDone: 2000, deadlineStatus: 'red', greenstopMoney: 0.4, yellowstopMoney: 0.5, orangestopMoney: 0.7, redstopMoney: 0.9 };
+        var project2 = { projectID: 2, projectName: "Project 2", budgethours: 6000, budgetPrice: 500000, reportedHours: 200, reportedSum: 6000, availableEmployeeProjectPlanHoursUntilDeadline: 3600, calculatedEstimatedRemainingHoursUntilDone: 3500, deadlineStatus: 1, greenstopMoney: 0.4,  yellowstopMoney: 0.5, orangestopMoney: 0.7, redstopMoney: 0.9 };
+        var project3 = { projectID: 3, projectName: "Project 3", budgethours: 5000, budgetPrice: 500000, reportedHours: 300, reportedSum: 7000, availableEmployeeProjectPlanHoursUntilDeadline: 3000, calculatedEstimatedRemainingHoursUntilDone: 2800, deadlineStatus: 1, greenstopMoney: 0.4, yellowstopMoney: 0.5, orangestopMoney: 0.7, redstopMoney: 0.9 };
+        var project4 = { projectID: 4, projectName: "Project 4", budgethours: 3000, budgetPrice: 500000, reportedHours: 3000, reportedSum: 80000, availableEmployeeProjectPlanHoursUntilDeadline: 1550, calculatedEstimatedRemainingHoursUntilDone: 1500, deadlineStatus: 1, greenstopMoney: 0.4, yellowstopMoney: 0.5, orangestopMoney: 0.7, redstopMoney: 0.9 };
+        var project5 = { projectID: 5, projectName: "Project 5", budgethours: 9000, budgetPrice: 500000, reportedHours: 500, reportedSum: 9000, availableEmployeeProjectPlanHoursUntilDeadline: 4000, calculatedEstimatedRemainingHoursUntilDone: 4200, deadlineStatus: 2, greenstopMoney: 0.4, yellowstopMoney: 0.5, orangestopMoney: 0.7, redstopMoney: 0.9 };
+        var project6 = { projectID: 6, projectName: "Project 6", budgethours: 11000, budgetPrice: 500000, reportedHours: 600, reportedSum: 10000, availableEmployeeProjectPlanHoursUntilDeadline: 4800, calculatedEstimatedRemainingHoursUntilDone: 5000, deadlineStatus: 3, greenstopMoney: 0.4, yellowstopMoney: 0.5, orangestopMoney: 0.7, redstopMoney: 0.9 };
+        var project7 = { projectID: 6, projectName: "Project 7", budgethours: 15000, budgetPrice: 50000, reportedHours: 700, reportedSum: 110000, availableEmployeeProjectPlanHoursUntilDeadline: 9000, calculatedEstimatedRemainingHoursUntilDone: 8000, deadlineStatus: 1, greenstopMoney: 0.4, yellowstopMoney: 0.5, orangestopMoney: 0.7, redstopMoney: 0.9 };
+        var project8 = { projectID: 6, projectName: "Project 8", budgethours: 300000, budgetPrice: 500000, reportedHours: 800, reportedSum: 12000, availableEmployeeProjectPlanHoursUntilDeadline: 120000, calculatedEstimatedRemainingHoursUntilDone: 130000, deadlineStatus: 3, greenstopMoney: 0.4, yellowstopMoney: 0.5, orangestopMoney: 0.7, redstopMoney: 0.9 };
+        var project9 = { projectID: 6, projectName: "Project 9", budgethours: 1000, budgetPrice: 500000, reportedHours: 900, reportedSum: 13000, availableEmployeeProjectPlanHoursUntilDeadline: 790, calculatedEstimatedRemainingHoursUntilDone: 750, deadlineStatus: 1, greenstopMoney: 0.4, yellowstopMoney: 0.5, orangestopMoney: 0.7, redstopMoney: 0.9 };
+        var project10 = { projectID: 6, projectName: "Project 10", budgethours: 6000, budgetPrice: 500000, reportedHours: 1000, reportedSum: 14000, availableEmployeeProjectPlanHoursUntilDeadline: 1500, calculatedEstimatedRemainingHoursUntilDone: 2000, deadlineStatus: 4, greenstopMoney: 0.4, yellowstopMoney: 0.5, orangestopMoney: 0.7, redstopMoney: 0.9 };
 
         //projects.push(project1);
         projects.push(project2);
@@ -162,16 +162,16 @@ window.common = (function () {
 
             var colorstring = '#ff0000';
             switch (projects[ind].deadlineStatus) {
-                case 'green':
+                case 1:
                     colorstring = '#33ff00';
                     break;
-                case 'yellow':
+                case 2:
                     colorstring = '#ffff00';
                     break;
-                case 'orange':
+                case 3:
                     colorstring = '#ff8800';
                     break;
-                case 'red':
+                case 4:
                     colorstring = '#ff0000';
                     break;
                 default:
@@ -840,8 +840,9 @@ window.common = (function () {
                 //alert(result)
             },
                 error: function (response) {
-                debugger;
-                alert('error');
+                //debugger;
+                    //alert('error');
+                    //Will get here because it is loaded too early. Ignore in prototype.
             }
         });
 
