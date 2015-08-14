@@ -80,19 +80,19 @@
 
                                         @for (var i = 1; i <= 10; i++)
                                         {
-                                            <div class="col-md-4">
+                                                <div class="col-md-4">
                                                 <form>
-                                                    <!--     </div>-->
-                                                    <!-- <fieldset style="width: 425px; height: 240px; margin: 4px; float:left; border: 2px solid navy">-->
-                                                    <!-- <legend>Projekt @i</legend>-->
-                                                    <!--   <div style="width: 400px; height: 250px; margin: 0 4px 7px 4px 2px">-->
-                                                    <div id="rcorners2">
-                                                        <fieldset>
-                                                            <legend id="@string.Format("legend{0}", i)" style="margin: 5px;">No data</legend>@*Projekt @i</legend>*@
-                                                            <div id="@string.Format("container-speed{0}", i)" style="width: 127px; height: 120px; float: left; margin-bottom: 20px; margin-left: 20px; margin-right: 20px; margin-top: 0px"></div>
-                                                            <div id="@string.Format("container-rpm{0}", i)" style="width: 127px; height: 120px; float: left; margin: 20px;"></div>
-                                                        </fieldset>
-                                                    </div>
+                                                <!--     </div>-->
+                                                <!-- <fieldset style="width: 425px; height: 240px; margin: 4px; float:left; border: 2px solid navy">-->
+                                                <!-- <legend>Projekt @i</legend>-->
+                                                <!--   <div style="width: 400px; height: 250px; margin: 0 4px 7px 4px 2px">-->
+                                                <div class="rcorners2">
+                                                    <fieldset>
+                                                        <legend id="@string.Format("legend{0}", i)" class="projectledgend" style="margin: 5px;">No data</legend>@*Projekt @i</legend>*@
+                                                        <div id="@string.Format("container-speed{0}", i)" style="width: 127px; height: 120px; float: left; margin-bottom: 20px; margin-left: 20px; margin-right: 20px; margin-top: 0px;"></div>
+                                                        <div id="@string.Format("container-rpm{0}", i)" style="width: 127px; height: 120px; float: left; margin: 20px;"></div>
+                                                    </fieldset>
+                                                </div>
 
                                                 </form>
                                             </div>
