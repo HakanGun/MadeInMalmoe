@@ -29,7 +29,10 @@
 
 html, body { height:100%; }
 
-body, label, button, a, p, h1, h2, h3, h4, h5, h6 {font-family: @font-family-base;}
+body, label, button, a, p, h1, h2, h3, h4, h5, h6 {
+font-family: Verdana, Arial, Helvetica, sans-serif;
+font-size: 14px;
+}
 
 body {  position: relative; /* For scrollyspy */ }
 

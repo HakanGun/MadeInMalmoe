@@ -51,6 +51,21 @@
     width: 142px;
 	}
 	
+.header-product .product-link{
+    color: white;
+    cursor: pointer;
+    display: block;
+    font-size: 1.8rem;
+    line-height: 2.1;
+    padding: 0 3rem 0 1rem;
+    text-decoration: none;
+    text-shadow: 0 -0.1rem rgba(0, 0, 0, 0.5);
+    min-width: 28rem;
+    position: relative;
+    height: 39px;
+
+}
+
 .navbar-brand:focus { outline: 1px dotted #fff; }
 	
 .navbar-collapse { padding:0px; }
@@ -68,15 +83,34 @@
 .navbar-default .nav > li > a, 
 .navbar-fixed-top .nav > li > a {
     font-size: 12px;
-    padding: 10px 15px 8px 17px;
+    padding: 3px 10px 4px 10px;
     color: #FFFFFF;
     font-weight: 700;
     margin-left: 3px;
     text-decoration: none;
     text-shadow: 0px 1px 0 #000000;
-	line-height:18px;
+	line-height:30px;
 	}
 
+.header-product .product-text {
+    color: #fff;
+    display: block;
+    font-size: 1.8rem;
+    line-height: 2.1;
+    padding: 0 3rem 0 1rem;
+    text-decoration: none;
+    text-shadow: 0 -.1rem rgba(0,0,0,.5);
+    min-width: 22rem;
+    position: relative;
+}
+
+.header-product .product-text span {
+    display: block;
+    max-width: 18rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
 
 .navbar-default .nav > li.active + li,
 .navbar-default .nav > li.active, 
@@ -329,7 +363,7 @@ form.navbar-form.navbar-search { margin: 9px 15px; padding:0px; }
     clear: both;
 	margin-top:-1px;
 	font-size: 1.2em;
-    padding: 12px 6px;
+    padding: 1px 6px;
 	}
 		
 .navbar-default .tab-content .tab-pane > a,
