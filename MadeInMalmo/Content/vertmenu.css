@@ -81,6 +81,12 @@
     background: url(../img/invoice_basis_normal_@1x.png) 0 0 no-repeat transparent;
 }
 
+.bs-sidebar.icons-nav li a.accountingMenuLink2:before {
+    background: url(../img/column_stacked_normal.png) 0 0 no-repeat transparent;
+    background-size:85%;
+    background-position:center;
+}
+
 .bs-subnav.nav > li > a {
 	/*.nav-item();*/
 	/*font-size: @font-size-base;*/

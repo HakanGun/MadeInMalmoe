@@ -1,21 +1,20 @@
 ﻿@using Microsoft.AspNet.Identity
-@if (Request.IsAuthenticated)
+@*@if (Request.IsAuthenticated)
 {
     using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
     {
-        @Html.AntiForgeryToken()
-    
-        
+        @Html.AntiForgeryToken()*@
+          
 <ul class="nav navbar-nav navbar-right">
     <li><a href=""><img src="~/img/ic_notifications.png" /></a></li>
     <li><a href=""><img src="~/img/help_general_normal.png"></a></li>
-    <li><a href="javascript:document.getElementById('logoutForm').submit()" style="margin-right:40px;">@User.Identity.GetUserName()
+    <li><a href="javascript:document.getElementById('logoutForm').submit()" style="margin-right:40px;">projectoverview@vline.spcs.se 
         <img src="~/img/arrow_white.png" style="margin-left:8px;" /></a>
     </li>
 </ul>
 
 
-    }
+    @*}
 }
 else
 {
@@ -23,4 +22,4 @@ else
         <li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
         <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
     </ul>
-}
+}*@

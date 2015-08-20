@@ -269,6 +269,7 @@
     <Content Include="img\checkIcon.png" />
     <Content Include="img\close_disabled.png" />
     <Content Include="img\close_normal.png" />
+    <Content Include="img\column_stacked_normal.png" />
     <Content Include="img\combobox.png" />
     <Content Include="img\contact_disabled.png" />
     <Content Include="img\contact_mouseover.png" />
@@ -315,6 +316,8 @@
     <Content Include="img\PDF_icon_14x14.png" />
     <Content Include="img\PDF_icon_16x16.png" />
     <Content Include="img\plusIcon.png" />
+    <Content Include="img\reports_disabled.png" />
+    <Content Include="img\report_normal.png" />
     <Content Include="img\search-icon.jpg" />
     <Content Include="img\searchIcon.png" />
     <Content Include="img\settings_disabled.png" />

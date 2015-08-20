@@ -9,8 +9,8 @@
 <link href="~/Content/vertmenu.css" rel="stylesheet" />
 
 
-<div class="wrapper">
-    <div class="header-wrapper">
+@*<div class="wrapper">
+    <div class="header-wrapper">*@
         <header>
             <div class="navbar-fixed-top">
                 @Html.Partial("_LoginPartial")
@@ -20,25 +20,18 @@
 
                     <div class="header-product">
                         <a class="product-link" id="productLink">
-                            <span>Visma Project Manager</span>
+                            <span>Visma Project Overwiew</span>
                         </a>
                     </div>
 
                 </div>
             </div>
         </header>
-    </div>
-</div>
+    @*</div>
+</div>*@
 
 
 <body class="greyPattern-backgr">
-    <div class="wrapper blue_backgrounds" style="height: 100%">
-        <div class="content-wrap fixed-block full-height">
-            <div class="main-content no-padding hide-overflow row-offcanvas row-offcanvas-left full-height" ng-class="rowOffCanvasClass">
-                <div class="content-wrap fixed-block full-height">
-                    <div class="content-cover ng-hide" ng-show="isMenuActive" ng-click="!isMenuActive || toggleOffCanvas()"></div>
-
-
                     <!-- ngView:  -->
                     <div ng-view="visible-md visible lg" class="view-content ng-scope">
                         <!--Mobile view-->
@@ -46,13 +39,7 @@
                             <header class="navbar navbar-fixed-top container no-side-margin mobile-header"></header>
 
                         </div>
-                        <!--Desktop view-->
-                        <div class="visible-md visible-lg visible-sm desktopview ng-scope">
-                            <section class="content-block grey-bar" style="height:1000px; position:relative;">
                                 <div class="app-content" style="position:relative;min-height:669px;">
-                                    <h2>
-                                        <span>Projects</span>
-                                    </h2>
 
                                     @{
                                         var numberOfProjects = (int)ViewData["NumberOfProjects"];
@@ -68,9 +55,9 @@
                                                 <!--   <div style="width: 400px; height: 250px; margin: 0 4px 7px 4px 2px">-->
                                                 <div class="rcorners2">
                                                     <fieldset>
-                                                        <legend id="@string.Format("legend{0}", i)" class="projectledgend" style="margin: 5px;">No data</legend>@*Projekt @i</legend>*@
-                                                        <div id="@string.Format("container-speed{0}", i)" style="width: 127px; height: 120px; float: left; margin-bottom: 20px; margin-left: 20px; margin-right: 20px; margin-top: 0px;"></div>
-                                                        <div id="@string.Format("container-rpm{0}", i)" style="width: 127px; height: 120px; float: left; margin: 20px;"></div>
+                                                        <div id="@string.Format("legend{0}", i)" class="projectledgend">No data</div>@*Projekt @i</legend>*@
+                                                        <div id="@string.Format("container-speed{0}", i)" style="width: 100px; height: 100px; float: left; margin-bottom: 20px; margin-left: 20px; margin-right: 10px; margin-top: 0px;"></div>
+                                                        <div id="@string.Format("container-rpm{0}", i)" style="width: 100px; height: 120px; float: left; margin: 20px;"></div>
                                                     </fieldset>
                                                 </div>
 
@@ -80,13 +67,13 @@
                                     }
 
                                 </div>
-                            </section>
+                            @*</section>*@
                         </div>
-                    </div>
+                    @*</div>
                 </div>
             </div>
         </div>
-    </div>
+    </div>*@
 
 
 
