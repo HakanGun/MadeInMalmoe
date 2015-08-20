@@ -313,7 +313,7 @@ window.common = (function () {
                     name: 'Kostnad',
                     data: [projects[ind].reportedSum],
                     dataLabels: {
-                        format: '<div style="text-align:center"><span style="font-size:25px;color:' +
+                        format: '<div style="text-align:center"><span style="font-size:23px; font-weight:bold;color:' +
                             ((Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black') + '">{y:.0f}</span><br/>' +
                                '<span style="font-size:12px;color:silver">kr</span></div>'
                     },
