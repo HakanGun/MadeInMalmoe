@@ -170,7 +170,33 @@ fieldset {}
 	clear: both;
 	}
 
-.wrapper { box-shadow: 0 .2em .5em rgba(0, 0, 0, 0.25); }
+
+
+/*@media (min-width: 768px)*/
+.wrapper {
+    box-shadow: 0 .2em .5em rgba(0, 0, 0, 0.25); 
+    margin-top: 0 !important;
+    height: auto !important;
+    position: relative;
+    min-height: 100%;
+    overflow: visible !important;
+    margin-bottom: 10px !important;
+    background: #f2f2f2;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+    .wrapper.blue_backgrounds {
+        margin-top: 0 !important;
+    height: auto !important;
+    position: relative;
+    min-height: 100%;
+    overflow: visible !important;
+    margin-bottom: 10px !important;
+    background: #386d8c;
+    /*background: #f2f2f2;
+    margin-left: 230px;*/
+    }
 
 /* Full width for elements */
 .full-width {
@@ -178,6 +204,14 @@ fieldset {}
     width: 100%;
 	.btn { width:100%; }
 	}
+
+.side-menu {
+    /*z-index: 5;
+    margin-left: -230px;*/
+    width:230px;
+    /*position:fixed;
+    float:left;*/
+}
 
 /* Grey background pattern */
 body.greyPattern-backgr { background: url(../img/bg_pattern.jpg) 0 0 repeat; }
@@ -629,7 +663,8 @@ body.greyPattern-backgr { background: url(../img/bg_pattern.jpg) 0 0 repeat; }
 	}
 
 .custom-select-wrapper:before {
-	background: #F5F5F5;
+	/*background: #F5F5F5;*/
+    background: #386d8c;
 	background: -webkit-linear-gradient(top,  #F5F5F5 20%,#CCCCCC 80%);
 	background: linear-gradient(to bottom,  #F5F5F5 20%,#CCCCCC 80%);
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#F5F5F5', endColorstr='#CCCCCC',GradientType=0 );
@@ -638,12 +673,12 @@ body.greyPattern-backgr { background: url(../img/bg_pattern.jpg) 0 0 repeat; }
     border-width: 1px;
     content: "";
     display: block;
-    height: 20px;
+    /*height: 20px;*/
     pointer-events: none;
     position: absolute;
     right: 0px;
     top: 0;
-    width: 19px;
+    width: 230px; /*19px;*/
 	}
 
 .custom-select-wrapper select {
@@ -1393,8 +1428,15 @@ a.list-group-item.active > .badge,
 
 /* Grey bar */
 .grey-bar {
-	.greyTabsBackground();
+	/*.greyTabsBackground();*/
 	padding: 6px 10px;
+
+    background-image: linear-gradient(white, #e5e5e5 75%, #ebebeb 100%);
+    border-bottom: solid 0.1rem #bfbfbf;
+    box-shadow: 0 0.1rem rgba(255, 255, 255, 0.8);
+    text-shadow: 0 0.1rem white;
+    padding: 6px 10px;
+
 	}
 .grey-bar p { margin:0px; line-height: 100%; }
 .grey-bar form, .grey-bar div { padding: 2px 0px; }

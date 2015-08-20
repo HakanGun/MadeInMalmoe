@@ -6,7 +6,7 @@
 @import url("../css/_mixins.less");
 
 .bs-sidebar {
-	width: 263px !important;
+	/*width: 263px !important;*/
 	margin-top: 30px;
 	margin-bottom: 30px;
 	padding-top: 0px;
@@ -46,8 +46,8 @@
 .nav > li { line-height:11px; }
 	
 .bs-sidenav.nav > li > a {
-	.nav-item();
-	font-size: @font-size-base;
+	/*.nav-item();*/
+	/*font-size: @font-size-base;*/
 	font-weight: normal;
 	text-decoration: none;
 	white-space: nowrap;
@@ -55,8 +55,61 @@
 	padding: 10px;
 	position: relative;
 	display: block;
+
+    background: #386d8c;
+    border-top: 1px solid #4c7c98;
+    border-bottom: 1px solid #2d5770;
+    color: white;
+    text-shadow: 0 1px 0 #19313f;
+    font-size: 11px;
+    font-weight: normal;
+    text-decoration: none;
+    white-space: nowrap;
+    margin: 0;
+    padding: 10px;
+    position: relative;
+    display: block;
 	}	
 	
+.bs-sidebar.icons-nav li a.timesheetMenuLink:before {
+    background: url(../img/time_registration_normal_@1x.png) 0 0 no-repeat transparent;
+}
+.bs-sidebar.icons-nav li a.reconciliationMenuLink:before {
+    background: url(../img/outlays_normal_@1x.png) 0 0 no-repeat transparent;
+}
+.bs-sidebar.icons-nav li a.accountingMenuLink:before {
+    background: url(../img/invoice_basis_normal_@1x.png) 0 0 no-repeat transparent;
+}
+
+.bs-subnav.nav > li > a {
+	/*.nav-item();*/
+	/*font-size: @font-size-base;*/
+	font-weight: normal;
+	text-decoration: none;
+	white-space: nowrap;
+	margin: 0;
+	position: relative;
+	display: block;
+
+  /* background: #386d8c;*/
+    background: rgb(46, 91, 115);
+    /*border-top: 1px solid #4c7c98;
+    border-bottom: 1px solid #2d5770;*/
+    color: white;
+    text-shadow: 0 1px 0 #19313f;
+    font-size: 11px;
+    font-weight: normal;
+    text-decoration: none;
+    white-space: nowrap;
+    margin: 0;
+    /*padding: 10px;*/
+    padding-left: 40px;
+    padding-bottom:8px;
+    padding-top:8px;
+    position: relative;
+    display: block;
+}
+
 .bs-sidenav.nav > li > a .nav-caret {
 	background: url(../img/leftmenu_rightarrow.png) no-repeat scroll right center;
 	border: none;
@@ -120,7 +173,7 @@
 	
 .bs-sidenav.nav .nav a {
 	font-size: @font-size-base;
-	padding: 8px 20px;
+	/*padding: 8px 20px;*/
 	color: #fff;
 	text-shadow: 0 1px 0 #19313f;
 	text-decoration: none;
@@ -275,10 +328,10 @@
 .bs-sidebar.icons-nav li.active a.saleMenuLink:before { background-position: -24px -23px; }
 .bs-sidebar.icons-nav li a.purchaseMenuLink:before { background-position: -48px -3px; }
 .bs-sidebar.icons-nav li.active a.saleMenuLink:before { background-position: -48px -23px; }
-.bs-sidebar.icons-nav li a.reconciliationMenuLink:before { background-position: -72px -2px; }
-.bs-sidebar.icons-nav li.active a.reconciliationMenuLink:before { background-position: -72px -23px; }
-.bs-sidebar.icons-nav li a.accountingMenuLink:before { background-position: -96px -2px; }
-.bs-sidebar.icons-nav li.active a.accountingMenuLink:before { background-position: -96px -2px; }
+/*.bs-sidebar.icons-nav li a.reconciliationMenuLink:before { background-position: -72px -2px; }
+.bs-sidebar.icons-nav li.active a.reconciliationMenuLink:before { background-position: -72px -23px; }*/
+/*.bs-sidebar.icons-nav li a.accountingMenuLink:before { background-position: -96px -2px; }
+.bs-sidebar.icons-nav li.active a.accountingMenuLink:before { background-position: -96px -2px; }*/
 .bs-sidebar.icons-nav li a.settingsMenuLink:before { background-position: -120px -1px; }
 .bs-sidebar.icons-nav li.active.activeParent a.settingsMenuLink:before { background-position: -120px -1px; }
 .bs-sidebar.icons-nav li.active a:after {  background-position: -10px 0px; }
@@ -298,7 +351,7 @@
 
 @media (min-width: 1200px) {
 	.bs-sidebar.affix-bottom, 
-	.bs-sidebar.affix { width: 263px; }
+	/*.bs-sidebar.affix { width: 263px; }*/
 }
 
 	

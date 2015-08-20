@@ -299,6 +299,7 @@
     <Content Include="img\ic_notifications.png" />
     <Content Include="img\ic_search.png" />
     <Content Include="img\information_normal.png" />
+    <Content Include="img\invoice_basis_normal_%401x.png" />
     <Content Include="img\leftmenu_rightarrow.png" />
     <Content Include="img\loading.gif" />
     <Content Include="img\login-background.png" />
@@ -310,6 +311,7 @@
     <Content Include="img\Nav-dividers.png" />
     <Content Include="img\online_help_mouseover.png" />
     <Content Include="img\online_help_normal.png" />
+    <Content Include="img\outlays_normal_%401x.png" />
     <Content Include="img\PDF_icon_14x14.png" />
     <Content Include="img\PDF_icon_16x16.png" />
     <Content Include="img\plusIcon.png" />
@@ -347,6 +349,7 @@
     <Content Include="img\supportmovies_normal.png" />
     <Content Include="img\tab-divider.png" />
     <Content Include="img\time_normal.png" />
+    <Content Include="img\time_registration_normal_%401x.png" />
     <Content Include="img\UX_logo_white.png" />
     <Content Include="img\visma-login-head.png" />
     <Content Include="img\visma-logo.png" />
