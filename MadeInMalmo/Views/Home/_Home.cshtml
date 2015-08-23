@@ -11,69 +11,75 @@
 
 @*<div class="wrapper">
     <div class="header-wrapper">*@
-        <header>
-            <div class="navbar-fixed-top">
-                @Html.Partial("_LoginPartial")
-                <div class="container">
+<header>
+    <div class="navbar-fixed-top">
+        @Html.Partial("_LoginPartial")
+        <div class="container">
 
 
 
-                    <div class="header-product">
-                        <a class="product-link" id="productLink">
-                            <span>Visma Project Overwiew</span>
-                        </a>
-                    </div>
-
-                </div>
+            <div class="header-product">
+                <a class="product-link" id="productLink">
+                    <span>Visma Project Overwiew</span>
+                </a>
             </div>
-        </header>
-    @*</div>
-</div>*@
+
+        </div>
+    </div>
+</header>
+@*</div>
+    </div>*@
 
 
 <body class="greyPattern-backgr">
-                    <!-- ngView:  -->
-                    <div ng-view="visible-md visible lg" class="view-content ng-scope">
-                        <!--Mobile view-->
-                        <div ng-view class="visible-xs mobileview ng-scope">
-                            <header class="navbar navbar-fixed-top container no-side-margin mobile-header"></header>
+    <!-- ngView:  -->
+    <div ng-view="visible-md visible lg" class="view-content ng-scope">
+        <!--Mobile view-->
+        <div ng-view class="visible-xs mobileview ng-scope">
+            <header class="navbar navbar-fixed-top container no-side-margin mobile-header"></header>
 
+        </div>
+        <div class="app-content" style="position:relative;min-height:669px;">
+
+            @{
+                var numberOfProjects = (int)ViewData["NumberOfProjects"];
+            }
+
+            @for (var i = 1; i <= 10; i++)
+            {
+                <div class="col-md-4">
+                    <form>
+                        <!--     </div>-->
+                        <!-- <fieldset style="width: 425px; height: 240px; margin: 4px; float:left; border: 2px solid navy">-->
+                        <!-- <legend>Projekt @i</legend>-->
+                        <!--   <div style="width: 400px; height: 250px; margin: 0 4px 7px 4px 2px">-->
+                        <div class="rcorners2">
+                            <fieldset>
+                                <div id="@string.Format("legend{0}", i)" class="projectledgend">No data</div>@*Projekt @i</legend>*@
+                                @*<div style="width: 100px; height: 20px; float: left; margin-top: 40px;">
+                                    <div style="margin-top:-30px; margin-left:20px;">Rubrik</div>*@
+                                    <div id="@string.Format("container-speed{0}", i)" style="width: 130px; height: 120px; float: left; margin-bottom: 20px; margin-left: 15px; margin-right: 0px; margin-top: 0px;"></div>
+                                @*</div>
+                                <div style="width: 100px; height: 20px; float: left; margin-top: 40px;">
+                                    <div style="margin-top:-30px; margin-left:20px;">Rubrik</div>*@
+                                    <div id="@string.Format("container-rpm{0}", i)" style="width: 120px; height: 147px; float: left; margin: 10px; margin-top:0px;"></div>
+                                @*</div>*@
+                            </fieldset>
                         </div>
-                                <div class="app-content" style="position:relative;min-height:669px;">
 
-                                    @{
-                                        var numberOfProjects = (int)ViewData["NumberOfProjects"];
-                                    }
+                    </form>
+                </div>
 
-                                    @for (var i = 1; i <= 10; i++)
-                                    {
-                                        <div class="col-md-4">
-                                            <form>
-                                                <!--     </div>-->
-                                                <!-- <fieldset style="width: 425px; height: 240px; margin: 4px; float:left; border: 2px solid navy">-->
-                                                <!-- <legend>Projekt @i</legend>-->
-                                                <!--   <div style="width: 400px; height: 250px; margin: 0 4px 7px 4px 2px">-->
-                                                <div class="rcorners2">
-                                                    <fieldset>
-                                                        <div id="@string.Format("legend{0}", i)" class="projectledgend">No data</div>@*Projekt @i</legend>*@
-                                                        <div id="@string.Format("container-speed{0}", i)" style="width: 100px; height: 120px; float: left; margin-bottom: 20px; margin-left: 20px; margin-right: 10px; margin-top: 0px;"></div>
-                                                        <div id="@string.Format("container-rpm{0}", i)" style="width: 100px; height: 100px; float: left; margin: 20px; margin-top:40px;"></div>
-                                                    </fieldset>
-                                                </div>
+            }
 
-                                            </form>
-                                        </div>
-
-                                    }
-
-                                </div>
-                            @*</section>*@
-                        </div>
-                    @*</div>
+        </div>
+        @*</section>*@
+    </div>
+    @*</div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>*@
+        </div>*@
 
 
 

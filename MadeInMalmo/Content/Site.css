@@ -76,6 +76,37 @@ textarea {
     font-family:Verdana;
 }
 
+.highcharts-yaxis-title{
+    margin-top:-30px;
+}
+
+.highcharts-container{
+    overflow:visible !important;
+}
+.highcharts-title{
+    box-sizing: border-box;
+    color: rgb(112, 112, 112) !important;
+    fill: rgb(112, 112, 112) !important;
+    display: inline;
+    font-family: 'Lucida Grande', 'Lucida Sans Unicode', Arial, Helvetica, sans-serif;
+    font-size: 12px !important;
+    font-weight: normal;
+    height: auto;
+    line-height: normal;
+    text-align: left;
+    transform-origin: 0px 0px;
+    white-space: nowrap;
+}
+
+.highcharts-container{
+/*width: 100px !important;*/
+text-align: center !important;   
+}
+
+.highcharts-title{
+    text-align: center !important;
+}
+
 @media only screen and (max-width: 767px) {
     .nofloat {
         float: none;

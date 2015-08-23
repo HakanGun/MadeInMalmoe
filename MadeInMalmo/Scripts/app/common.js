@@ -85,7 +85,7 @@ window.common = (function () {
 
             pane: {
                 center: ['50%', '85%'],
-                size: '110%',
+                size: '100%',
                 startAngle: -90,
                 endAngle: 90,
                 background: {
@@ -112,7 +112,7 @@ window.common = (function () {
                 tickPixelInterval: 400,
                 tickWidth: 0,
                 title: {
-                    y: -70
+                    y: -40
                 },
                 labels: {
                     y: 16
@@ -188,8 +188,9 @@ window.common = (function () {
                     },
                     title: {
                         text: 'Timmar',
-                        align: 'left',
-                        x: 10,
+                        align: 'center',
+                        x: -15,
+                        y: 15,
                         verticalAlign: 'top',
                     },
                     subtitle: {
@@ -295,7 +296,8 @@ window.common = (function () {
                     min: 0,
                     max: projects[ind].budgetPrice,
                     title: {
-                        text: 'Kostnad'
+                        text: '<p>Kostnad €</p>',
+                        y: -64
                     },
                     stops: [
                     [projects[ind].greenstopMoney, '#55BF3B'], // green
@@ -313,9 +315,9 @@ window.common = (function () {
                     name: 'Kostnad',
                     data: [projects[ind].reportedSum],
                     dataLabels: {
-                        format: '<div style="text-align:center"><span style="font-size:23px; font-weight:bold;color:' +
-                            ((Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black') + '">{y:.0f}</span><br/>' +
-                               '<span style="font-size:12px;color:silver">kr</span></div>'
+                        format: '<div style="text-align:center; padding-bottom:10px;"><span style="font-size:11px; font-weight:bold;color:' +
+                            ((Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black') + '">{y:,.0f}</span><br/><br/>' + //{y:.0f}
+                               '<span style="font-size:12px;color:silver">&nbsp;</span></div>'
                     },
                     tooltip: {
                         valueSuffix: ' revolutions/min'
