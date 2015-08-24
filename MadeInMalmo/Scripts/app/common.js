@@ -188,7 +188,7 @@ window.common = (function () {
                         margin: [30, 50, 5, 20], //Top, right, bottom, left
                     },
                     title: {
-                        text: 'Timmar',
+                        text: 'Hours',
                         align: 'center',
                         x: -15,
                         y: 15,
@@ -298,7 +298,7 @@ window.common = (function () {
                     max: projects[ind].budgetPrice,
                     tickInterval: projects[ind].budgetPrice,
                     title: {
-                        text: '<p>Kostnad €</p>',
+                        text: '<p>Costs</p>',
                         y: -64
                     },
                     showFirstLabel: false,
@@ -335,8 +335,8 @@ window.common = (function () {
                     name: 'Kostnad',
                     data: [projects[ind].reportedSum],
                     dataLabels: {
-                        format: '<div style="text-align:center; padding-bottom:10px;"><span style="font-size:11px; font-weight:bold;color:' +
-                            ((Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black') + '">{y:,.0f}</span><br/><br/>' + //{y:.0f}
+                        format: '<div style="text-align:center; padding-bottom:50px;"><span style="font-size:11px; font-weight:bold;color:' +
+                            ((Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black') + '">{y:,.0f}</span>&nbsp' + '€' + //{y:.0f}
                                '<span style="font-size:12px;color:silver">&nbsp;</span></div>'
                     },
                     tooltip: {
