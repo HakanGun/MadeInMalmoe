@@ -12,15 +12,13 @@
 @*<div class="wrapper">
     <div class="header-wrapper">*@
 <header>
-    <div class="navbar-fixed-top">
+    <div class="navbar-fixed-top" style="width: 1200px; margin-left: 2.3%; margin-right: 2%">
         @Html.Partial("_LoginPartial")
-        <div class="container">
-
-
+        <div class="container" style="padding-left:0px; margin-left:0px;">
 
             <div class="header-product">
                 <a class="product-link" id="productLink">
-                    <span>Visma Project Overwiew</span>
+                    <span>Visma eAccounting Time</span>
                 </a>
             </div>
 
@@ -47,7 +45,7 @@
 
             @for (var i = 1; i <= 10; i++)
             {
-                <div class="col-md-4">
+                <div class="col-md-4" style="padding-left:6px;">
                     <form>
                         <!--     </div>-->
                         <!-- <fieldset style="width: 425px; height: 240px; margin: 4px; float:left; border: 2px solid navy">-->
@@ -55,16 +53,10 @@
                         <!--   <div style="width: 400px; height: 250px; margin: 0 4px 7px 4px 2px">-->
                         <div class="rcorners2">
                             <fieldset>
-                                <div id="@string.Format("legend{0}", i)" class="projectledgend">No data</div>@*Projekt @i</legend>*@
-                                @*<div style="width: 100px; height: 20px; float: left; margin-top: 40px;">
-                                    <div style="margin-top:-30px; margin-left:20px;">Rubrik</div>*@
-                                    <div id="@string.Format("container-speed{0}", i)" style="width: 130px; height: 120px; float: left; margin-bottom: 20px; margin-left: 15px; margin-right: 0px; margin-top: 0px;"></div>
-                                @*</div>
-                                <div style="width: 100px; height: 20px; float: left; margin-top: 40px;">
-                                    <div style="margin-top:-30px; margin-left:20px;">Rubrik</div>*@
-                                    <div id="@string.Format("container-rpm{0}", i)" style="width: 120px; height: 147px; float: left; margin: 10px; margin-top:0px;"></div>
-                                @*</div>*@
-                            </fieldset>
+                                <div id="@string.Format("legend{0}", i)" class="projectledgend">No data</div>
+                                <div id="@string.Format("container-speed{0}", i)" style="width: 130px; height: 120px; float: left; margin-bottom: 20px; margin-left: 15px; margin-right: 0px; margin-top: 0px;"></div>
+                                <div id="@string.Format("container-rpm{0}", i)" style="width: 120px; height: 147px; float: left; margin: 10px; margin-top:0px;"></div>
+                             </fieldset>
                         </div>
 
                     </form>

@@ -55,7 +55,7 @@ namespace MadeInMalmo.Business
         {
             // Dummy data.... Todo: use a Project instead and a convertor, and eventually get data from the database instead.
             var item1 = new ProjectStatusOverview();
-            item1.budgetPrice = 150000M;
+            item1.budgetPrice = 170000M;
             //item1.BudgetAdjusted = false;
             //item1.BudgetStatus = StatusIndicatorEnum.green;
             item1.reportedSum = 85000M;

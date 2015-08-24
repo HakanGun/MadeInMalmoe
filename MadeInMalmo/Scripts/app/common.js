@@ -131,8 +131,8 @@ window.common = (function () {
         };
         
         //var projects = [];
-        //var project1 = { projectID: 1, projectName: "Project 1", budgethours: 2000, budgetPrice: 90000, reportedHours: 100, reportedSum: 5000 };
-        var project2 = { projectID: 2, projectName: "Project 2", budgethours: 6000, budgetPrice: 500000, reportedHours: 200, reportedSum: 6000, availableEmployeeProjectPlanHoursUntilDeadline: 3600, calculatedEstimatedRemainingHoursUntilDone: 3500, deadlineStatus: 1, greenstopMoney: 0.4,  yellowstopMoney: 0.5, orangestopMoney: 0.7, redstopMoney: 0.9 };
+        //var project1 = { projectID: 1, projectName: "Project 1", budgethours: 2000, budgetPrice: 90000, reportedHours: 100, reportedSum: 5000,  availableEmployeeProjectPlanHoursUntilDeadline: 3600, calculatedEstimatedRemainingHoursUntilDone: 3500, deadlineStatus: 1, greenstopMoney: 0.4,  yellowstopMoney: 0.5, orangestopMoney: 0.7, redstopMoney: 0.9 };
+        var project2 = { projectID: 2, projectName: "Project 2", budgethours: 6000, budgetPrice: 7800, reportedHours: 200, reportedSum: 6000, availableEmployeeProjectPlanHoursUntilDeadline: 3600, calculatedEstimatedRemainingHoursUntilDone: 3500, deadlineStatus: 1, greenstopMoney: 0.4,  yellowstopMoney: 0.5, orangestopMoney: 0.7, redstopMoney: 0.9 };
         var project3 = { projectID: 3, projectName: "Project 3", budgethours: 5000, budgetPrice: 500000, reportedHours: 300, reportedSum: 7000, availableEmployeeProjectPlanHoursUntilDeadline: 3000, calculatedEstimatedRemainingHoursUntilDone: 2800, deadlineStatus: 1, greenstopMoney: 0.4, yellowstopMoney: 0.5, orangestopMoney: 0.7, redstopMoney: 0.9 };
         var project4 = { projectID: 4, projectName: "Project 4", budgethours: 3000, budgetPrice: 500000, reportedHours: 3000, reportedSum: 80000, availableEmployeeProjectPlanHoursUntilDeadline: 1550, calculatedEstimatedRemainingHoursUntilDone: 1500, deadlineStatus: 1, greenstopMoney: 0.4, yellowstopMoney: 0.5, orangestopMoney: 0.7, redstopMoney: 0.9 };
         var project5 = { projectID: 5, projectName: "Project 5", budgethours: 9000, budgetPrice: 500000, reportedHours: 500, reportedSum: 9000, availableEmployeeProjectPlanHoursUntilDeadline: 4000, calculatedEstimatedRemainingHoursUntilDone: 4200, deadlineStatus: 2, greenstopMoney: 0.4, yellowstopMoney: 0.5, orangestopMoney: 0.7, redstopMoney: 0.9 };
@@ -142,6 +142,7 @@ window.common = (function () {
         var project9 = { projectID: 6, projectName: "Project 9", budgethours: 1000, budgetPrice: 500000, reportedHours: 900, reportedSum: 13000, availableEmployeeProjectPlanHoursUntilDeadline: 790, calculatedEstimatedRemainingHoursUntilDone: 750, deadlineStatus: 1, greenstopMoney: 0.4, yellowstopMoney: 0.5, orangestopMoney: 0.7, redstopMoney: 0.9 };
         var project10 = { projectID: 6, projectName: "Project 10", budgethours: 6000, budgetPrice: 500000, reportedHours: 1000, reportedSum: 14000, availableEmployeeProjectPlanHoursUntilDeadline: 1500, calculatedEstimatedRemainingHoursUntilDone: 2000, deadlineStatus: 4, greenstopMoney: 0.4, yellowstopMoney: 0.5, orangestopMoney: 0.7, redstopMoney: 0.9 };
 
+        //projects = [];//project1;
         //projects.push(project1);
         projects.push(project2);
         projects.push(project3);
@@ -295,9 +296,28 @@ window.common = (function () {
                 yAxis: {
                     min: 0,
                     max: projects[ind].budgetPrice,
+                    tickInterval: projects[ind].budgetPrice,
                     title: {
                         text: '<p>Kostnad €</p>',
                         y: -64
+                    },
+                    showFirstLabel: false,
+                    labels: {
+                        x:  5,
+                        //overflow: 'justify',
+                        style: {
+                            whiteSpace: 'nowrap',
+                        },
+                        //align: 'left',
+                        //y: 0,
+                        format: '{value:,.0f}'
+                        //formatter: function () {
+                        //    var text = this.value,
+                        //     formatted = Highcharts.numberFormat(this.value, 0) + '...';
+                        //    //    formatted = text.length > 25 ? text.substring(0, 25) + '...' : text;
+
+                        //    return '<div class="js-ellipse" style="width:150px; overflow:hidden" title="' + text + '">' + formatted + '</div>';
+                        //},
                     },
                     stops: [
                     [projects[ind].greenstopMoney, '#55BF3B'], // green
