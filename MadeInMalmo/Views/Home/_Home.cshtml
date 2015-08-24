@@ -7,6 +7,7 @@
 <link href="~/Content/login.css" rel="stylesheet" />
 <link href="~/Content/Site.css" rel="stylesheet" />
 <link href="~/Content/vertmenu.css" rel="stylesheet" />
+<script src="~/Scripts/app/SortOrder.js"></script>
 
 
 @*<div class="wrapper">
@@ -40,56 +41,40 @@
 
         </div>
         <div class="app-content" style="position:relative;min-height:669px;">
+            <div id="columns" draggable="true">
 
-            @{
-                var numberOfProjects = (int)ViewData["NumberOfProjects"];
-            }
+                @{
+                    var numberOfProjects = (int)ViewData["NumberOfProjects"];
+                }
 
-            @for (var i = 1; i <= 10; i++)
-            {
-                <div class="col-md-4">
-                    <form>
-                        <!--     </div>-->
-                        <!-- <fieldset style="width: 425px; height: 240px; margin: 4px; float:left; border: 2px solid navy">-->
-                        <!-- <legend>Projekt @i</legend>-->
-                        <!--   <div style="width: 400px; height: 250px; margin: 0 4px 7px 4px 2px">-->
-                        <div class="rcorners2">
-                            <fieldset>
-                                <div id="@string.Format("legend{0}", i)" class="projectledgend">No data</div>@*Projekt @i</legend>*@
-                                @*<div style="width: 100px; height: 20px; float: left; margin-top: 40px;">
-                                    <div style="margin-top:-30px; margin-left:20px;">Rubrik</div>*@
+                @for (var i = 1; i <= 10; i++)
+                {
+                    <div class="col-md-4" draggable="true">
+                        <form>
+                            <!--     </div>-->
+                            <!-- <fieldset style="width: 425px; height: 240px; margin: 4px; float:left; border: 2px solid navy">-->
+                            <!-- <legend>Projekt @i</legend>-->
+                            <!--   <div style="width: 400px; height: 250px; margin: 0 4px 7px 4px 2px">-->
+                            <div class="rcorners2">
+                                <fieldset>
+                                    <div id="@string.Format("legend{0}", i)" class="projectledgend">No data</div>@*Projekt @i</legend>*@
+                                    @*<div style="width: 100px; height: 20px; float: left; margin-top: 40px;">
+                                <div style="margin-top:-30px; margin-left:20px;">Rubrik</div>*@
                                     <div id="@string.Format("container-speed{0}", i)" style="width: 130px; height: 120px; float: left; margin-bottom: 20px; margin-left: 15px; margin-right: 0px; margin-top: 0px;"></div>
-                                @*</div>
+                                    @*</div>
                                 <div style="width: 100px; height: 20px; float: left; margin-top: 40px;">
                                     <div style="margin-top:-30px; margin-left:20px;">Rubrik</div>*@
                                     <div id="@string.Format("container-rpm{0}", i)" style="width: 120px; height: 147px; float: left; margin: 10px; margin-top:0px;"></div>
-                                @*</div>*@
-                            </fieldset>
-                        </div>
+                                    @*</div>*@
+                                </fieldset>
+                            </div>
 
-                    </form>
-                </div>
-
-            }
-
-        </div>
-        @*</section>*@
-    </div>
-    @*</div>
+                        </form>
                     </div>
-                </div>
+                }
             </div>
-        </div>*@
-
-
-
-
-
-
-
-
-
-
+            </div>
+        </div>
 </body>
 <!--
             <div class="col-md-4">

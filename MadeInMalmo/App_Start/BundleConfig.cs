@@ -27,6 +27,7 @@ namespace MadeInMalmo
                    "~/Scripts/app/app.datamodel.js",
                    "~/Scripts/app/app.viewmodel.js",
                    "~/Scripts/app/home.viewmodel.js",
+                   "~/Scripts/app/SortOrder.js",
                    "~/Scripts/app/_run.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/highcharts").Include(

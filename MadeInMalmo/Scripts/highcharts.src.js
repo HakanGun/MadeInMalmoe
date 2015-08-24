@@ -2599,7 +2599,7 @@ SVGElement.prototype = {
 		elemWrapper.animate({
 			opacity: 0
 		}, {
-			duration: duration || 150,
+			duration: duration || 1000,
 			complete: function () {
 				elemWrapper.attr({ y: -9999 }); // #3088, assuming we're only using this for tooltips
 			}
