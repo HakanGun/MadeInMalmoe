@@ -301,12 +301,16 @@ window.common = (function () {
                         text: '<p>Costs</p>',
                         y: -64
                     },
-                    showFirstLabel: false,
+                    showFirstLabel: true,
                     labels: {
-                        x:  5,
+                        align: 'left',
+                        x: -19,
+                        tickPosition: "inside",
+                        tickWidth: 1,
                         //overflow: 'justify',
                         style: {
                             whiteSpace: 'nowrap',
+                            
                         },
                         //align: 'left',
                         //y: 0,
