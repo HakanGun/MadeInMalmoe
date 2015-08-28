@@ -164,19 +164,19 @@ window.common = (function () {
             var colorstring = '#ff0000';
             switch (projects[ind].deadlineStatus) {
                 case 1:
-                    colorstring = '#33ff00';
+                    colorstring = '#55BF3B';
                     break;
                 case 2:
-                    colorstring = '#ffff00';
+                    colorstring = '#f5eb36';//'#f7f734';
                     break;
                 case 3:
-                    colorstring = '#ff8800';
+                    colorstring = '#ff9e1f';//'#ff8800';
                     break;
                 case 4:
-                    colorstring = '#ff0000';
+                    colorstring = '#e01b1b';
                     break;
                 default:
-                    colorstring = '#33ff00';
+                    colorstring = '#55BF3B';
             }
 
 
@@ -320,10 +320,10 @@ window.common = (function () {
                         //},
                     },
                     stops: [
-                    [projects[ind].greenstopMoney, '#55BF3B'], // green
-                    [projects[ind].yellowstopMoney, '#DDDF0D'], // yellow
-                    [projects[ind].orangestopMoney, '#ff8800'], // orange
-                    [projects[ind].redstopMoney, '#DF5353'] // red
+                    [projects[ind].greenstopMoney, '#47c229'], // green '#55BF3B'
+                    [projects[ind].yellowstopMoney, '#f5eb36'], // yellow '#DDDF0D'
+                    [projects[ind].orangestopMoney, '#ff9e1f'], // orange
+                    [projects[ind].redstopMoney, '#e01b1b'] // red '#DF5353'
                     ],
                 },
 
