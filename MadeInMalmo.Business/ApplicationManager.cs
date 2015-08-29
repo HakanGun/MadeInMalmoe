@@ -31,11 +31,13 @@ namespace MadeInMalmo.Business
                 projectStatusOverview.budgetPrice = lastBudget == null ? project.OriginalPrice : lastBudget.BudgetMoney;
                 projectStatusOverview.calculatedEstimatedRemainingHoursUntilDone = project.ProjectCalculations.CalculatedEstimatedRemainingHoursUntilDone;
                 projectStatusOverview.calculatedEstimatedRemainingMoneyCostUntilFinished = project.ProjectCalculations.CalculatedEstimatedRemainingMoneyCostUntilFinished;
-                projectStatusOverview.DeadlineAdjusted = false; // Todo (if needed)!
+                projectStatusOverview.DeadlineAdjusted = project.ProjectCalculations.DeadlineAdjusted;
+                projectStatusOverview.deadline = project.ProjectCalculations.CurrentDeadlineString;
                 projectStatusOverview.projectID = project.ProjectId;
                 projectStatusOverview.projectName = project.ProjectName;
                 projectStatusOverview.remainingMoneyFromBudget = project.ProjectCalculations.RemainingMoneyFromBudget;
-                projectStatusOverview.reportedHours = 0; //Todo (if needed)!
+                projectStatusOverview.reportedHours = 0;
+                projectStatusOverview.delayed = lastBudget.Deadline > DateTime.Today ? 1 : 0;
             }
 
             // Dummy data since database is empty...
@@ -62,6 +64,8 @@ namespace MadeInMalmo.Business
             item1.DeadlineAdjusted = false;
             //item1.DeadlineStatus = StatusIndicatorEnum.green;
             item1.projectName = "MadeInMalmö";
+            item1.deadline = "2015-10-09";
+            item1.delayed = 0;
             item1.projectID = 1;
             //item1.WorkdaysPassed = 35;
             //item1.budgethours = 80;
@@ -124,6 +128,9 @@ namespace MadeInMalmo.Business
         {
             project.ProjectCalculations = new ProjectCalculation();
 
+            // Common...
+            var lastBudget = project.ProjectBudgets.OrderByDescending(x => x.CreatedDate).FirstOrDefault();
+
             // Some of the code in this method is redundant on purpose to make it easier to separate the different calculations.
             #region CalculatedEstimatedRemainingHoursUntilDone
             // CalculatedEstimatedRemainingHoursUntilDone
@@ -159,14 +166,20 @@ namespace MadeInMalmo.Business
             #region AvailableEmployeeProjectPlanHoursUntilDeadline
             //AvailableEmployeeProjectPlanHoursUntilDeadline
             decimal availableEmployeeProjectPlanHoursUntilDeadline = 0;
+            var deadline = lastBudget == null ? project.OrigialDeadline : lastBudget.Deadline;
+            project.ProjectCalculations.CurrentDeadlineString = deadline.ToShortDateString();
+            project.ProjectCalculations.DeadlineAdjusted = !(lastBudget == null);
+
             foreach (var employee in project.ProjectEmployees)
             {
                 foreach (var plan in employee.EmployeeProjectPlans)
                 {
                     var startdate = plan.StartDate > DateTime.Today ? plan.StartDate : DateTime.Today;
 
-                    // Improvement! Get the dealine from project or latest budget instead of assuming endDate not after deadline.
-                    var numberOfDaysInPeriod = this.GetNumberOfWeekdaysBeweenDates(startdate, plan.EndDate);
+                    // Do not count days after deadline....
+                    var endDate = plan.EndDate < deadline ? plan.EndDate : deadline;
+
+                    var numberOfDaysInPeriod = this.GetNumberOfWeekdaysBeweenDates(startdate, endDate);
                     availableEmployeeProjectPlanHoursUntilDeadline += numberOfDaysInPeriod * plan.AverageDailyHours;
                 }
             }
@@ -246,8 +259,6 @@ namespace MadeInMalmo.Business
             #region RemainingMoneyFromBudget
             // RemainingMoneyFromBudget
 
-            // Get last budget for project
-            var lastBudget = project.ProjectBudgets.OrderByDescending(x => x.CreatedDate).FirstOrDefault();
             var lastBudgetMoney = lastBudget == null ? project.OriginalPrice : lastBudget.BudgetMoney;
             var totalMoneyForInvoice = 0.0M;
 

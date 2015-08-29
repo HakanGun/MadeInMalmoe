@@ -19,5 +19,9 @@ namespace MadeInMalmo.Business.Data.Entities
 
         // The (latest) budget minus the hours already registered for invoicing until today
         public decimal RemainingMoneyFromBudget { get; set; }
+
+        public string CurrentDeadlineString { get; set; }
+
+        public bool DeadlineAdjusted { get; set; }
     }
 }

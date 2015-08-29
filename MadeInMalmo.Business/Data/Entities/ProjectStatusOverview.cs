@@ -16,6 +16,8 @@ namespace MadeInMalmo.Business.Data.Entities
 
         //public int WorkdaysPassed { get; set; }
 
+        public string deadline { get; set; }
+
         public bool DeadlineAdjusted { get; set; }
 
         public StatusIndicatorEnum deadlineStatus { get; set; }
@@ -31,6 +33,8 @@ namespace MadeInMalmo.Business.Data.Entities
         public decimal calculatedEstimatedRemainingHoursUntilDone { get; set; }
 
         public decimal remainingMoneyFromBudget { get; set; }
+
+        public int delayed { get; set; }
 
         //public bool BudgetAdjusted { get; set; }
 
