@@ -27,7 +27,7 @@ namespace MadeInMalmo.Business.Data
 
                 using (IDataReader reader = db.ExecuteReader(command))
                 {
-                    if (reader.Read())
+                    while (reader.Read())
                     {
                         result.Add(this.GetProjectFromReader(reader));
                     }
@@ -49,7 +49,7 @@ namespace MadeInMalmo.Business.Data
 
                 using (IDataReader reader = db.ExecuteReader(command))
                 {
-                    if (reader.Read())
+                    while (reader.Read())
                     {
                         result.Add(this.GetProjectBudgetFromReader(reader));
                     }
@@ -71,7 +71,7 @@ namespace MadeInMalmo.Business.Data
 
                 using (IDataReader reader = db.ExecuteReader(command))
                 {
-                    if (reader.Read())
+                    while (reader.Read())
                     {
                         result.Add(this.GetProjectEstimateFromReader(reader));
                     }
@@ -94,7 +94,7 @@ namespace MadeInMalmo.Business.Data
 
                 using (IDataReader reader = db.ExecuteReader(command))
                 {
-                    if (reader.Read())
+                    while (reader.Read())
                     {
                         result.Add(this.GetEmployeeProjectWorkingHoursFromReader(reader));
                     }
@@ -116,7 +116,7 @@ namespace MadeInMalmo.Business.Data
 
                 using (IDataReader reader = db.ExecuteReader(command))
                 {
-                    if (reader.Read())
+                    while (reader.Read())
                     {
                         result.Add(this.GetProjectEmployeeFromReader(reader));
                     }
@@ -139,7 +139,7 @@ namespace MadeInMalmo.Business.Data
 
                 using (IDataReader reader = db.ExecuteReader(command))
                 {
-                    if (reader.Read())
+                    while (reader.Read())
                     {
                         result.Add(this.GetEmployeeProjectPlanFromReader(reader));
                     }
@@ -179,7 +179,7 @@ namespace MadeInMalmo.Business.Data
         {
             var result = new ProjectEstimate();
             result.Date = this.GetValueFromReader<DateTime>("Date", reader);
-            result.EstimateHoursLeft = this.GetValueFromReader<int>("EstimateHours", reader);
+            result.EstimateHoursLeft = this.GetValueFromReader<decimal>("EstimateHours", reader);
             result.ProjectEstimateId = this.GetValueFromReader<int>("ProjectEstimateId", reader);
             result.ProjectId = this.GetValueFromReader<int>("ProjectId", reader);
             
@@ -220,10 +220,10 @@ namespace MadeInMalmo.Business.Data
         {
             var result = new EmployeeProjectPlan();
             result.AverageDailyHours = this.GetValueFromReader<decimal>("AverageDailyHours", reader);
-            result.EmployeeProjectId = this.GetValueFromReader<int>("", reader);
-            result.EmployeeProjectPlanId = this.GetValueFromReader<int>("", reader);
-            result.EndDate = this.GetValueFromReader<DateTime>("", reader);
-            result.StartDate = this.GetValueFromReader<DateTime>("", reader);
+            result.EmployeeProjectId = this.GetValueFromReader<int>("EmployeeProjectId", reader);
+            result.EmployeeProjectPlanId = this.GetValueFromReader<int>("EmployeeProjectPlanId", reader);
+            result.EndDate = this.GetValueFromReader<DateTime>("EndDate", reader);
+            result.StartDate = this.GetValueFromReader<DateTime>("StartDate", reader);
            
             return result;
         }

@@ -23,5 +23,7 @@ namespace MadeInMalmo.Business.Data.Entities
         public string CurrentDeadlineString { get; set; }
 
         public bool DeadlineAdjusted { get; set; }
+
+        public decimal TotalMoneyForInvoice { get; set; }
     }
 }

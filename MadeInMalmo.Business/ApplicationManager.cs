@@ -37,12 +37,15 @@ namespace MadeInMalmo.Business
                 projectStatusOverview.projectName = project.ProjectName;
                 projectStatusOverview.remainingMoneyFromBudget = project.ProjectCalculations.RemainingMoneyFromBudget;
                 projectStatusOverview.reportedHours = 0;
-                projectStatusOverview.delayed = lastBudget.Deadline > DateTime.Today ? 1 : 0;
+                projectStatusOverview.delayed = lastBudget == null ? (project.OrigialDeadline < DateTime.Today ? 1 : 0) : (lastBudget.Deadline < DateTime.Today ? 1 : 0);
+                projectStatusOverview.reportedSum = project.ProjectCalculations.TotalMoneyForInvoice;
+                
+                result.Add(projectStatusOverview);
             }
 
             // Dummy data since database is empty...
-            var item1 = GetDummyProject1();
-            result.Add(item1);
+            //var item1 = GetDummyProject1();
+            //result.Add(item1);
 
             // Calculate some values. Could be moved to the entity instead in "real" version.
             foreach (var projectStatusOverview in result)
@@ -271,6 +274,7 @@ namespace MadeInMalmo.Business
             }
 
             project.ProjectCalculations.RemainingMoneyFromBudget = lastBudgetMoney - totalMoneyForInvoice;
+            project.ProjectCalculations.TotalMoneyForInvoice = totalMoneyForInvoice;
 
             #endregion
         }

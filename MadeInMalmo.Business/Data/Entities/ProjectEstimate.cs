@@ -14,6 +14,6 @@ namespace MadeInMalmo.Business.Data.Entities
 
         public DateTime Date { get; set; }
 
-        public int EstimateHoursLeft { get; set; }
+        public decimal EstimateHoursLeft { get; set; }
     }
 }
