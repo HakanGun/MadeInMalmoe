@@ -13,8 +13,8 @@
 @*<div class="wrapper">
     <div class="header-wrapper">*@
 <header>
-    <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
-        <div class="navbar-fixed-top" style="width: 1200px; margin-left: 2.1%; margin-right: 2%">
+    <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation" style="margin:auto;">
+        <div class="navbar-fixed-top" style="width: 1200px; margin:auto;">
             @Html.Partial("_LoginPartial")
 
             <div class="header-product" style="width:50px">
@@ -42,32 +42,32 @@
         <div class="app-content" style="position:relative;min-height:669px;">
             <div id="columns" draggable="true">
 
-            @{
-                var numberOfProjects = (int)ViewData["NumberOfProjects"];
-            }
+                @{
+                    var numberOfProjects = (int)ViewData["NumberOfProjects"];
+                }
 
-            @for (var i = 1; i <= 10; i++)
-            {
-                <div class="col-md-4" draggable="true" style="padding-left:6px;">
-                    <form>
-                        <!--     </div>-->
-                        <!-- <fieldset style="width: 425px; height: 240px; margin: 4px; float:left; border: 2px solid navy">-->
-                        <!-- <legend>Projekt @i</legend>-->
-                        <!--   <div style="width: 400px; height: 250px; margin: 0 4px 7px 4px 2px">-->
-                        <div class="rcorners2">
-                            <fieldset>
-                                <div class="projectledgend"><div style="margin-right:100px;"><div id="@string.Format("legend{0}", i)" style="float:left;">No data</div><div id="@string.Format("deadline{0}", i)" style="float:right; margin-right:-90px; font-size:12px; color:rgb(112, 112, 112);font-family: 'Lucida Grande', 'Lucida Sans Unicode', Arial, Helvetica, sans-serif;font-weight: normal; height:21px; padding-top:4px;">Deadline</div></div></div>
-                                <div id="@string.Format("container-speed{0}", i)" style="width: 130px; height: 120px; float: left; margin-bottom: 20px; margin-left: 10px; margin-right: 0px; margin-top: 0px;"></div>
-                                <div id="@string.Format("container-rpm{0}", i)" style="width: 120px; height: 147px; float: left; margin: 0px; margin-top:0px;"></div>
-                            </fieldset>
-                        </div>
+                @for (var i = 1; i <= 10; i++)
+                {
+                    <div class="col-md-4" draggable="true" style="padding-left:6px;">
+                        <form>
+                            <!--     </div>-->
+                            <!-- <fieldset style="width: 425px; height: 240px; margin: 4px; float:left; border: 2px solid navy">-->
+                            <!-- <legend>Projekt @i</legend>-->
+                            <!--   <div style="width: 400px; height: 250px; margin: 0 4px 7px 4px 2px">-->
+                            <div class="rcorners2">
+                                <fieldset>
+                                    <div class="projectledgend"><div style="margin-right:100px;"><div id="@string.Format("legend{0}", i)" style="float:left;">No data</div><div id="@string.Format("deadline{0}", i)" style="float:right; margin-right:-90px; font-size:12px; color:rgb(112, 112, 112);font-family: 'Lucida Grande', 'Lucida Sans Unicode', Arial, Helvetica, sans-serif;font-weight: normal; height:21px; padding-top:4px;">Deadline</div></div></div>
+                                    <div id="@string.Format("container-speed{0}", i)" style="width: 130px; height: 120px; float: left; margin-bottom: 20px; margin-left: 10px; margin-right: 0px; margin-top: 0px;"></div>
+                                    <div id="@string.Format("container-rpm{0}", i)" style="width: 120px; height: 147px; float: left; margin: 0px; margin-top:0px;"></div>
+                                </fieldset>
+                            </div>
 
-                    </form>
-                </div>
-            }
+                        </form>
                     </div>
-                </div>
+                }
             </div>
+        </div>
+    </div>
 </body>
 <!--
             <div class="col-md-4">

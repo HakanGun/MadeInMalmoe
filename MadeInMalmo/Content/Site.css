@@ -42,11 +42,11 @@ textarea {
     cursor: pointer;
 }
 
-.col-md-4:hover{
+/*.col-md-4:hover{
   -moz-box-shadow: 0 0 10px #ccc; 
  -webkit-box-shadow: 0 0 10px #fff; 
  box-shadow: 0 0 10px #ccc;
-}
+}*/
 
 .grey-bar {
     border-bottom: 1px solid white;

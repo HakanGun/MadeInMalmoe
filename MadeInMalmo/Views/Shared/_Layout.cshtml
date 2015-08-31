@@ -19,65 +19,68 @@
 </head>
 <body class="greyPattern-backgr">
 
-    <div class="content-holder" style="margin-left:1.5%;">
-<div class="wrapper blue_backgrounds" style="height:100%; max-width:1018px; float:left;">
-     
-                    <div class="no-padding side-menu collapse in sidebar-offcanvas">
-                        <div class="bs-sidebar static-nav icons-nav panel affix-top" style="overflow:auto;">
-                           <div class="heading" style="z-index: 2;"></div>
-                             <ul class="nav bs-sidenav">
-                                <li data-ng-repeat="menuItem in menuItems" id="timeRegistration" data-ng-class="getClasses(menuItem)" class="ng-scope">
-                                    <a href="#" class="timesheetMenuLink noChildren" data-ng-class="{'noChildren': menuItem.childNodes.length == 0}">Time registration</a>
-                                    <ul class="nav">
-                                        <!-- ngRepeat: subMenuItem in menuItem.childNodes -->
-                                    </ul>
-                                </li>
-                                <li data-ng-repeat="menuItem in menuItems" id="outlays" data-ng-class="getClasses(menuItem)" class="ng-scope">
-                                    <a href="#" class="reconciliationMenuLink noChildren" data-ng-class="{'noChildren': menuItem.childNodes.length == 0}">Outlays</a>
-                                    <ul class="nav">
-                                        <!-- ngRepeat: subMenuItem in menuItem.childNodes -->
-                                    </ul>
-                                </li>
-                                <li data-ng-repeat="menuItem in menuItems" id="invoiceBasis" data-ng-class="getClasses(menuItem)" class="ng-scope visible-lg visible-md visible-sm">
-                                    <a href="/#" class="accountingMenuLink noChildren" data-ng-class="{'noChildren': menuItem.childNodes.length == 0}">Invoicing basis</a>
-                                    <ul class="nav">
-                                        <!-- ngRepeat: subMenuItem in menuItem.childNodes -->
-                                    </ul>
-                                </li>
-                                <li data-ng-repeat="menuItem in menuItems" id="invoiceBasis" data-ng-class="getClasses(menuItem)" class="ng-scope visible-lg visible-md visible-sm active">
-                                    <a href="/#" class="accountingMenuLink2 noChildren" data-ng-class="{'noChildren': menuItem.childNodes.length == 0}">Project overview</a>
-                                    <ul class="nav bs-subnav">
-                                        <!-- ngRepeat: subMenuItem in menuItem.childNodes -->
-                                        <li id="projectOverviewSub" data-ng-class="getClasses(menuItem)"><a href="#">Project overview</a></li>
-                                        <li id="projectOverviewSettings" data-ng-class="getClasses(menuItem)"><a href="#">Settings</a></li>
-                                    </ul>
-                                </li>
+    <div class="content-holder">
+        <div class="wrapper" style="width: 1200px; position: relative; margin:auto;">
+            <div class="wrapper blue_backgrounds" style="width:1200px; height:1027px; position:fixed; margin:auto;">
+                <div class="no-padding side-menu collapse in sidebar-offcanvas">
+                    <div class="bs-sidebar static-nav icons-nav panel affix-top">
+                        <div class="heading" style="z-index: 2;"></div>
+                        <ul class="nav bs-sidenav">
+                            <li data-ng-repeat="menuItem in menuItems" id="timeRegistration" data-ng-class="getClasses(menuItem)" class="ng-scope">
+                                <a href="#" class="timesheetMenuLink noChildren" data-ng-class="{'noChildren': menuItem.childNodes.length == 0}">Time registration</a>
+                                <ul class="nav">
+                                    <!-- ngRepeat: subMenuItem in menuItem.childNodes -->
+                                </ul>
+                            </li>
+                            <li data-ng-repeat="menuItem in menuItems" id="outlays" data-ng-class="getClasses(menuItem)" class="ng-scope">
+                                <a href="#" class="reconciliationMenuLink noChildren" data-ng-class="{'noChildren': menuItem.childNodes.length == 0}">Outlays</a>
+                                <ul class="nav">
+                                    <!-- ngRepeat: subMenuItem in menuItem.childNodes -->
+                                </ul>
+                            </li>
+                            <li data-ng-repeat="menuItem in menuItems" id="invoiceBasis" data-ng-class="getClasses(menuItem)" class="ng-scope visible-lg visible-md visible-sm">
+                                <a href="/#" class="accountingMenuLink noChildren" data-ng-class="{'noChildren': menuItem.childNodes.length == 0}">Invoicing basis</a>
+                                <ul class="nav">
+                                    <!-- ngRepeat: subMenuItem in menuItem.childNodes -->
+                                </ul>
+                            </li>
+                            <li data-ng-repeat="menuItem in menuItems" id="invoiceBasis" data-ng-class="getClasses(menuItem)" class="ng-scope visible-lg visible-md visible-sm active">
+                                <a href="/#" class="accountingMenuLink2 noChildren" data-ng-class="{'noChildren': menuItem.childNodes.length == 0}">Project overview</a>
+                                <ul class="nav bs-subnav">
+                                    <!-- ngRepeat: subMenuItem in menuItem.childNodes -->
+                                    <li id="projectOverviewSub" data-ng-class="getClasses(menuItem)"><a href="#">Project overview</a></li>
+                                    <li id="projectOverviewSettings" data-ng-class="getClasses(menuItem)"><a href="#">Settings</a></li>
+                                </ul>
+                            </li>
 
-                            </ul>
-                        </div>
+                        </ul>
                     </div>
 
 
 
-                    @*<div class="container body-content">*@
-                    <div style="margin-left:230px; float:left; margin-top:-245px; width:970px; height:1027px;" class="main-content no-padding hide-overflow row-offcanvas row-offcanvasleft full-height active" ng-class="rowOffCanvasClass">
-                        <div class="content-wrap fixed-block full-height">
-                            <div ng-view class="view-content ng-scope" style="height:1026px;">
-                                <section class="content-block grey-bar fixed-content">
-                                    <h1 style="margin:0px; line-height:27px; font-size:12px;">Project overview</h1>
-                                </section>
-                                @RenderBody()
-                                @RenderSection("SPAViews", required: false)
+                    <div class="container body-content" style="margin: auto; position: fixed; width: 100%; height: 100%; position: absolute; top: 0; left: 215px; z-index: 10; float:left;">
+                        <div style="margin:auto; position:absolute; float:left; width:970px; height:1027px;" class="main-content no-padding hide-overflow row-offcanvas row-offcanvasleft full-height active" ng-class="rowOffCanvasClass">
+                            <div class="content-wrap fixed-block full-height">
+                                <div ng-view class="view-content ng-scope" style="height:1026px;">
+                                    <section class="content-block grey-bar fixed-content">
+                                        <h1 style="margin:0px; line-height:27px; font-size:12px;">Project overview</h1>
+                                    </section>
+                                    @RenderBody()
+                                    @RenderSection("SPAViews", required: false)
 
-                                <footer>
-                                    @*<p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>*@
-                                </footer>
+                                    <footer>
+                                        @*<p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>*@
+                                    </footer>
+                                </div>
                             </div>
                         </div>
                     </div>
-    </div>
+                </div>
 
 
+
+            </div>
+        </div>
     </div>
         @Scripts.Render("~/bundles/jquery")
         @Scripts.Render("~/bundles/bootstrap")
